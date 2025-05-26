@@ -7,20 +7,23 @@
   <!-- Ενσωμάτωση Tailwind CSS από CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 text-gray-800 font-sans">
-  <div class="max-w-4xl mx-auto p-6">
-    <header class="text-center mb-10">
+<body class="bg-slate-900 text-white font-sans">
+  <div class="max-w-4xl mx-auto p-6 backdrop-blur bg-white/30 shadow-lg rounded-xl">
+    <header class="text-center mb-10 relative">
+      <div class="absolute top-0 right-0 mt-4 mr-4">
+        <button class="bg-white text-slate-900 font-semibold px-3 py-1 rounded hover:bg-gray-200">EN / GR</button>
+      </div>
       <img src="profile_optimized.jpg" alt="Άγγελος Αραπιώτης" class="w-40 h-40 rounded-full mx-auto shadow-lg mb-4">
       <h1 class="text-3xl font-bold">Άγγελος Αραπιώτης</h1>
-      <h2 class="text-lg text-gray-600">Automation Developer | Low-code Enthusiast</h2>
+      <h2 class="text-lg text-slate-300">Automation Developer | Low-code Enthusiast</h2>
     </header>
 
-    <section class="bg-white rounded-xl shadow-md p-6 mb-6">
+    <section class="bg-white/10 backdrop-blur-md rounded-xl shadow-md p-6 mb-6">
       <h3 class="text-xl font-semibold mb-2">👤 Επαγγελματικό Προφίλ</h3>
       <p>Πολυδιάστατος επαγγελματίας με εμπειρία στον τομέα της φιλοξενίας, της κρεοπωλικής, της μπαρτέντινγκ και των VIP μεταφορών. Γνωστός για την προσαρμοστικότητα, την άριστη επικοινωνία και την ποιοτική εξυπηρέτηση πελατών. Εργατικός, μεθοδικός και πρόθυμος να συμβάλει ουσιαστικά στην επιτυχία κάθε ομάδας.</p>
     </section>
 
-    <section class="bg-white rounded-xl shadow-md p-6 mb-6">
+    <section class="bg-white/10 backdrop-blur-md rounded-xl shadow-md p-6 mb-6">
       <h3 class="text-xl font-semibold mb-2">🎓 Εκπαίδευση</h3>
       <ul class="list-disc pl-5">
         <li>Πτυχίο Ψύξης & Κλιματισμού – Επαγγελματικό Λύκειο Κρήτης</li>
@@ -28,7 +31,7 @@
       </ul>
     </section>
 
-    <section class="bg-white rounded-xl shadow-md p-6 mb-6">
+    <section class="bg-white/10 backdrop-blur-md rounded-xl shadow-md p-6 mb-6">
       <h3 class="text-xl font-semibold mb-2">🗣️ Γλώσσες</h3>
       <ul class="list-disc pl-5">
         <li><strong>Ελληνικά:</strong> Άριστη χρήση σε επαγγελματικό & καθημερινό περιβάλλον</li>
@@ -36,7 +39,7 @@
       </ul>
     </section>
 
-    <section class="bg-white rounded-xl shadow-md p-6 mb-6">
+    <section class="bg-white/10 backdrop-blur-md rounded-xl shadow-md p-6 mb-6">
       <h3 class="text-xl font-semibold mb-2">💼 Επαγγελματική Εμπειρία</h3>
       <ul class="list-disc pl-5">
         <li><strong>Centrum Hotel, Ρέικιαβικ:</strong> Bartender (Μάιος 2024 – σήμερα)</li>
@@ -49,7 +52,7 @@
       </ul>
     </section>
 
-    <section class="bg-white rounded-xl shadow-md p-6 mb-6">
+    <section class="bg-white/10 backdrop-blur-md rounded-xl shadow-md p-6 mb-6">
       <h3 class="text-xl font-semibold mb-2">🧠 Δεξιότητες</h3>
       <ul class="list-disc pl-5">
         <li>Φιλοξενία: Bartending, σερβιτόρος, εξυπηρέτηση πελατών</li>
@@ -60,7 +63,7 @@
       </ul>
     </section>
 
-    <section class="bg-white rounded-xl shadow-md p-6 mb-6">
+    <section class="bg-white/10 backdrop-blur-md rounded-xl shadow-md p-6 mb-6">
       <h3 class="text-xl font-semibold mb-2">📄 Πιστοποιήσεις & Στρατιωτική Θητεία</h3>
       <ul class="list-disc pl-5">
         <li>Άδεια οδήγησης: Αυτοκίνητο & Μηχανή</li>
@@ -70,7 +73,7 @@
       </ul>
     </section>
 
-    <section class="bg-white rounded-xl shadow-md p-6">
+    <section class="bg-white/10 backdrop-blur-md rounded-xl shadow-md p-6">
       <h3 class="text-xl font-semibold mb-2">📨 Επικοινωνία μαζί μου</h3>
       <form name="contact" method="POST" netlify class="space-y-4">
         <input type="text" name="name" placeholder="Όνομά σου" required class="w-full p-2 border border-gray-300 rounded">
@@ -79,9 +82,9 @@
         <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Αποστολή</button>
       </form>
       <div class="mt-4">
-        <p>Email: <a href="mailto:aggelosar2@gmail.com" class="text-blue-600 hover:underline">aggelosar2@gmail.com</a></p>
+        <p>Email: <a href="mailto:aggelosar2@gmail.com" class="text-blue-400 hover:underline">aggelosar2@gmail.com</a></p>
         <p>Τηλέφωνο: 7665049</p>
-        <p>GitHub: <a href="https://github.com/aggelosarapiotis" target="_blank" class="text-blue-600 hover:underline">github.com/aggelosarapiotis</a></p>
+        <p>GitHub: <a href="https://github.com/aggelosarapiotis" target="_blank" class="text-blue-400 hover:underline">github.com/aggelosarapiotis</a></p>
       </div>
     </section>
 
