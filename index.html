@@ -11,8 +11,17 @@
       document.querySelectorAll('[data-lang-en]').forEach(el => el.classList.toggle('hidden'));
     }
   </script>
+  <style>
+    /* Προαιρετικό: Εξασφαλίζει ομαλή μετάβαση για την μπάρα προόδου */
+    #progressBar {
+      transition: width 0.2s ease-out;
+    }
+  </style>
 </head>
 <body class="bg-slate-900 text-white font-sans">
+
+  <div id="progressBar" class="fixed top-0 left-0 h-1.5 bg-white z-50" style="width: 0%;"></div>
+
   <section class="h-screen bg-gradient-to-br from-slate-800 to-slate-900 flex flex-col items-center justify-center text-center px-4">
     <h1 class="text-5xl font-bold animate-pulse mb-4" data-lang-gr>Καλώς ήρθες!</h1>
     <h1 class="text-5xl font-bold animate-pulse mb-4 hidden" data-lang-en>Welcome!</h1>
@@ -24,7 +33,7 @@
     <a href="#cv" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full animate-bounce hidden" data-lang-en>Let's go!</a>
   </section>
 
-  <div id="cv" class="max-w-4xl mx-auto p-6 **backdrop-blur-xl bg-white/20** shadow-lg rounded-xl mt-[-4rem] z-10 relative">
+  <div id="cv" class="max-w-4xl mx-auto p-6 backdrop-blur-xl bg-white/20 shadow-lg rounded-xl mt-[-4rem] z-10 relative">
     <header class="text-center mb-10 relative">
       <div class="absolute top-0 right-0 mt-4 mr-4">
         <button onclick="toggleLanguage()" class="bg-white text-slate-900 font-semibold px-3 py-1 rounded hover:bg-gray-200">EN / GR</button>
@@ -36,23 +45,23 @@
       <h2 class="text-lg text-slate-300 hidden" data-lang-en>Automation Developer | Low-code Enthusiast</h2>
     </header>
 
-    <section class="**bg-white/10 backdrop-blur-lg** rounded-xl shadow-md p-6 mb-6" data-lang-gr>
+    <section class="bg-white/10 backdrop-blur-lg rounded-xl shadow-md p-6 mb-6" data-lang-gr>
       <h3 class="text-xl font-semibold mb-2">Επαγγελματικό Προφίλ</h3>
       <p>Πολυδιάστατος επαγγελματίας με εμπειρία στον τομέα της φιλοξενίας, της κρεοπωλικής, της μπαρτέντινγκ και των VIP μεταφορών. Γνωστός για την προσαρμοστικότητα, την άριστη επικοινωνία και την ποιοτική εξυπηρέτηση πελατών. Εργατικός, μεθοδικός και πρόθυμος να συμβάλει ουσιαστικά στην επιτυχία κάθε ομάδας.</p>
     </section>
-    <section class="**bg-white/10 backdrop-blur-lg** rounded-xl shadow-md p-6 mb-6 hidden" data-lang-en>
+    <section class="bg-white/10 backdrop-blur-lg rounded-xl shadow-md p-6 mb-6 hidden" data-lang-en>
       <h3 class="text-xl font-semibold mb-2">Professional Profile</h3>
       <p>A versatile professional with experience in hospitality, butchery, bartending, and VIP transport. Known for adaptability, excellent communication, and top-tier customer service. Diligent, methodical, and eager to contribute meaningfully to any team.</p>
     </section>
 
-    <section class="**bg-white/10 backdrop-blur-lg** rounded-xl shadow-md p-6 mb-6" data-lang-gr>
+    <section class="bg-white/10 backdrop-blur-lg rounded-xl shadow-md p-6 mb-6" data-lang-gr>
       <h3 class="text-xl font-semibold mb-2">Εκπαίδευση</h3>
       <ul class="list-disc pl-5">
         <li>Πτυχίο Ψύξης & Κλιματισμού – Επαγγελματικό Λύκειο Κρήτης</li>
         <li>Τεχνικός Κρεοπώλης – MBS Κρήτης (Διετής πρακτική εκπαίδευση)</li>
       </ul>
     </section>
-    <section class="**bg-white/10 backdrop-blur-lg** rounded-xl shadow-md p-6 mb-6 hidden" data-lang-en>
+    <section class="bg-white/10 backdrop-blur-lg rounded-xl shadow-md p-6 mb-6 hidden" data-lang-en>
       <h3 class="text-xl font-semibold mb-2">Education</h3>
       <ul class="list-disc pl-5">
         <li>Refrigeration & Air Conditioning Diploma – Technical High School of Crete</li>
@@ -60,14 +69,14 @@
       </ul>
     </section>
 
-    <section class="**bg-white/10 backdrop-blur-lg** rounded-xl shadow-md p-6 mb-6" data-lang-gr>
+    <section class="bg-white/10 backdrop-blur-lg rounded-xl shadow-md p-6 mb-6" data-lang-gr>
       <h3 class="text-xl font-semibold mb-2">Γλώσσες</h3>
       <ul class="list-disc pl-5">
         <li><strong>Ελληνικά:</strong> Άριστη χρήση σε επαγγελματικό & καθημερινό περιβάλλον</li>
         <li><strong>Αγγλικά:</strong> Πιστοποίηση από Πανεπιστήμιο του Michigan. Χρήση σε καθημερινή βάση σε τουριστικές & επαγγελματικές επαφές</li>
       </ul>
     </section>
-    <section class="**bg-white/10 backdrop-blur-lg** rounded-xl shadow-md p-6 mb-6 hidden" data-lang-en>
+    <section class="bg-white/10 backdrop-blur-lg rounded-xl shadow-md p-6 mb-6 hidden" data-lang-en>
       <h3 class="text-xl font-semibold mb-2">Languages</h3>
       <ul class="list-disc pl-5">
         <li><strong>Greek:</strong> Fluent in both professional and casual environments</li>
@@ -75,7 +84,7 @@
       </ul>
     </section>
 
-    <section class="**bg-white/10 backdrop-blur-lg** rounded-xl shadow-md p-6 mb-6" data-lang-gr>
+    <section class="bg-white/10 backdrop-blur-lg rounded-xl shadow-md p-6 mb-6" data-lang-gr>
       <h3 class="text-xl font-semibold mb-2">Επαγγελματική Εμπειρία</h3>
       <ul class="list-disc pl-5">
         <li><strong>Centrum Hotel, Ρέικιαβικ:</strong> Bartender (Μάιος 2024 – σήμερα)</li>
@@ -87,7 +96,7 @@
         <li><strong>Πολυτελή Ξενοδοχεία, Κρήτη:</strong> Οδηγός VIP μεταφορών (2019 – 2021)</li>
       </ul>
     </section>
-    <section class="**bg-white/10 backdrop-blur-lg** rounded-xl shadow-md p-6 mb-6 hidden" data-lang-en>
+    <section class="bg-white/10 backdrop-blur-lg rounded-xl shadow-md p-6 mb-6 hidden" data-lang-en>
       <h3 class="text-xl font-semibold mb-2">Professional Experience</h3>
       <ul class="list-disc pl-5">
         <li><strong>Centrum Hotel, Reykjavik:</strong> Bartender (May 2024 – Present)</li>
@@ -100,7 +109,7 @@
       </ul>
     </section>
 
-    <section class="**bg-white/10 backdrop-blur-lg** rounded-xl shadow-md p-6 mb-6" data-lang-gr>
+    <section class="bg-white/10 backdrop-blur-lg rounded-xl shadow-md p-6 mb-6" data-lang-gr>
       <h3 class="text-xl font-semibold mb-2">Δεξιότητες</h3>
       <ul class="list-disc pl-5">
         <li>Φιλοξενία: Bartending, σερβιτόρος, εξυπηρέτηση πελατών</li>
@@ -110,7 +119,7 @@
         <li>Προσαρμοστικότητα: Γρήγορη εκμάθηση, ευελιξία σε νέα περιβάλλοντα</li>
       </ul>
     </section>
-    <section class="**bg-white/10 backdrop-blur-lg** rounded-xl shadow-md p-6 mb-6 hidden" data-lang-en>
+    <section class="bg-white/10 backdrop-blur-lg rounded-xl shadow-md p-6 mb-6 hidden" data-lang-en>
       <h3 class="text-xl font-semibold mb-2">Skills</h3>
       <ul class="list-disc pl-5">
         <li>Hospitality: Bartending, waiter service, customer support</li>
@@ -121,7 +130,7 @@
       </ul>
     </section>
 
-    <section class="**bg-white/10 backdrop-blur-lg** rounded-xl shadow-md p-6 mb-6" data-lang-gr>
+    <section class="bg-white/10 backdrop-blur-lg rounded-xl shadow-md p-6 mb-6" data-lang-gr>
       <h3 class="text-xl font-semibold mb-2">Πιστοποιήσεις & Στρατιωτική Θητεία</h3>
       <ul class="list-disc pl-5">
         <li>Άδεια οδήγησης: Αυτοκίνητο & Μηχανή</li>
@@ -130,7 +139,7 @@
         <li>Τοποθεσία: Ρέικιαβικ, Ισλανδία</li>
       </ul>
     </section>
-    <section class="**bg-white/10 backdrop-blur-lg** rounded-xl shadow-md p-6 mb-6 hidden" data-lang-en>
+    <section class="bg-white/10 backdrop-blur-lg rounded-xl shadow-md p-6 mb-6 hidden" data-lang-en>
       <h3 class="text-xl font-semibold mb-2">Certificates & Military Service</h3>
       <ul class="list-disc pl-5">
         <li>Driving License: Car & Motorbike</li>
@@ -140,7 +149,7 @@
       </ul>
     </section>
 
-    <section class="**bg-white/10 backdrop-blur-lg** rounded-xl shadow-md p-6" data-lang-gr>
+    <section class="bg-white/10 backdrop-blur-lg rounded-xl shadow-md p-6" data-lang-gr>
       <h3 class="text-xl font-semibold mb-2">Επικοινωνία</h3>
       <form name="contact" method="POST" netlify class="space-y-4">
         <input type="text" name="name" placeholder="Όνομά σου" required class="w-full p-2 border border-gray-300 rounded">
@@ -154,7 +163,7 @@
         <p>GitHub: <a href="https://github.com/aggelosarapiotis" target="_blank" class="text-blue-400 hover:underline">github.com/aggelosarapiotis</a></p>
       </div>
     </section>
-    <section class="**bg-white/10 backdrop-blur-lg** rounded-xl shadow-md p-6 hidden" data-lang-en>
+    <section class="bg-white/10 backdrop-blur-lg rounded-xl shadow-md p-6 hidden" data-lang-en>
       <h3 class="text-xl font-semibold mb-2">Contact</h3>
       <form name="contact-en" method="POST" netlify class="space-y-4">
         <input type="text" name="name" placeholder="Your Name" required class="w-full p-2 border border-gray-300 rounded">
@@ -169,5 +178,16 @@
       </div>
     </section>
   </div>
+
+  <script>
+    window.onscroll = function() {
+      var progressBar = document.getElementById("progressBar");
+      var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      var scrolled = (winScroll / height) * 100;
+      progressBar.style.width = scrolled + "%";
+    };
+  </script>
+
 </body>
 </html>
