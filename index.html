@@ -10,6 +10,23 @@
       document.querySelectorAll('[data-lang-gr]').forEach(el => el.classList.toggle('hidden'));
       document.querySelectorAll('[data-lang-en]').forEach(el => el.classList.toggle('hidden'));
     }
+
+    // Function to toggle "See More"
+    function toggleSeeMore(id) {
+      const textSpan = document.getElementById(id + '-text');
+      const moreText = document.getElementById(id + '-more');
+      const button = document.getElementById(id + '-button');
+
+      if (moreText.classList.contains('hidden')) {
+        textSpan.classList.remove('line-clamp-3'); // Remove clamp if you use it for initial hiding
+        moreText.classList.remove('hidden');
+        button.textContent = 'Δες λιγότερα'; // "See Less"
+      } else {
+        // textSpan.classList.add('line-clamp-3'); // Add clamp back if you want
+        moreText.classList.add('hidden');
+        button.textContent = 'Δες περισσότερα'; // "See More"
+      }
+    }
   </script>
   <style>
     /* Προαιρετικό: Εξασφαλίζει ομαλή μετάβαση για την μπάρα προόδου */
@@ -20,6 +37,13 @@
     .circular-image {
       object-fit: cover;
       object-position: center;
+    }
+    /* Για την αρχική απόκρυψη του κειμένου "See More" */
+    .line-clamp-3 {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
   </style>
 </head>
@@ -85,23 +109,27 @@
 
     <section class="bg-white/10 backdrop-blur-lg rounded-xl p-8 mb-12" data-lang-gr>
         <h3 class="text-xl font-semibold mb-4 text-blue-300">Επαγγελματικό Προφίλ</h3>
-        <div class="flex items-start space-x-4">
-            <img src="multitask_professional_optimized.png" alt="Επαγγελματικό Προφίλ" class="w-20 h-20 rounded-lg flex-shrink-0">
-            <p>Πολυδιάστατος επαγγελματίας με εμπειρία στον τομέα της φιλοξενίας, της κρεοπωλικής, της μπαρτέντινγκ και των VIP μεταφορών. Γνωστός για την προσαρμοστικότητα, την άριστη επικοινωνία και την ποιοτική εξυπηρέτηση πελατών. Εργατικός, μεθοδικός και πρόθυμος να συμβάλει ουσιαστικά στην επιτυχία κάθε ομάδας.</p>
+        <div class="flex items-start flex-row-reverse space-x-4 space-x-reverse">
+            <img src="multitask_professional_optimized.png" alt="Επαγγελματικό Προφίλ" class="w-48 h-auto rounded-lg flex-shrink-0">
+            <div>
+                <span id="professional-profile-gr-text">Πολυδιάστατος επαγγελματίας με εμπειρία στον τομέα της φιλοξενίας, της κρεοπωλικής, της μπαρτέντινγκ και των VIP μεταφορών. Γνωστός για την προσαρμοστικότητα, την άριστη επικοινωνία και την ποιοτική εξυπηρέτηση πελατών. Εργατικός, μεθοδικός και πρόθυμος να συμβάλει ουσιαστικά στην επιτυχία κάθε ομάδας.</span>
+                </div>
         </div>
     </section>
     <section class="bg-white/10 backdrop-blur-lg rounded-xl p-8 mb-12 hidden" data-lang-en>
         <h3 class="text-xl font-semibold mb-4 text-blue-300">Professional Profile</h3>
-        <div class="flex items-start space-x-4">
-            <img src="multitask_professional_optimized.png" alt="Professional Profile" class="w-20 h-20 rounded-lg flex-shrink-0">
-            <p>A versatile professional with experience in hospitality, butchery, bartending, and VIP transport. Known for adaptability, excellent communication, and top-tier customer service. Diligent, methodical, and eager to contribute meaningfully to any team.</p>
+        <div class="flex items-start flex-row-reverse space-x-4 space-x-reverse">
+            <img src="multitask_professional_optimized.png" alt="Professional Profile" class="w-48 h-auto rounded-lg flex-shrink-0">
+            <div>
+                <span id="professional-profile-en-text">A versatile professional with experience in hospitality, butchery, bartending, and VIP transport. Known for adaptability, excellent communication, and top-tier customer service. Diligent, methodical, and eager to contribute meaningfully to any team.</span>
+                </div>
         </div>
     </section>
 
     <section class="bg-white/10 backdrop-blur-lg rounded-xl p-8 mb-12" data-lang-gr>
         <h3 class="text-xl font-semibold mb-4 text-blue-300">Επαγγελματική Εμπειρία</h3>
-        <div class="flex items-start space-x-4">
-            <img src="work_experience_optimized.png" alt="Επαγγελματική Εμπειρία" class="w-20 h-20 rounded-lg flex-shrink-0">
+        <div class="flex items-start flex-row-reverse space-x-4 space-x-reverse">
+            <img src="work_experience_optimized.png" alt="Επαγγελματική Εμπειρία" class="w-48 h-auto rounded-lg flex-shrink-0">
             <ul class="list-disc pl-5 space-y-4">
                 <li><strong>Centrum Hotel, Ρέικιαβικ:</strong> Bartender (Μάιος 2024 – σήμερα)</li>
                 <li><strong>Beergarden, Ρέικιαβικ:</strong> Bartender (Φεβ 2024 – Οκτ 2024)</li>
@@ -115,8 +143,8 @@
     </section>
     <section class="bg-white/10 backdrop-blur-lg rounded-xl p-8 mb-12 hidden" data-lang-en>
         <h3 class="text-xl font-semibold mb-4 text-blue-300">Professional Experience</h3>
-        <div class="flex items-start space-x-4">
-            <img src="work_experience_optimized.png" alt="Professional Experience" class="w-20 h-20 rounded-lg flex-shrink-0">
+        <div class="flex items-start flex-row-reverse space-x-4 space-x-reverse">
+            <img src="work_experience_optimized.png" alt="Professional Experience" class="w-48 h-auto rounded-lg flex-shrink-0">
             <ul class="list-disc pl-5 space-y-4">
                 <li><strong>Centrum Hotel, Reykjavik:</strong> Bartender (May 2024 – Present)</li>
                 <li><strong>Beergarden, Reykjavik:</strong> Bartender (Feb 2024 – Oct 2024)</li>
@@ -131,8 +159,8 @@
 
     <section class="bg-white/10 backdrop-blur-lg rounded-xl p-8 mb-12" data-lang-gr>
         <h3 class="text-xl font-semibold mb-4 text-blue-300">Εκπαίδευση</h3>
-        <div class="flex items-start space-x-4">
-            <img src="education_optimized.png" alt="Εκπαίδευση" class="w-20 h-20 rounded-lg flex-shrink-0">
+        <div class="flex items-start flex-row-reverse space-x-4 space-x-reverse">
+            <img src="education_optimized.png" alt="Εκπαίδευση" class="w-48 h-auto rounded-lg flex-shrink-0">
             <ul class="list-disc pl-5 space-y-4">
                 <li>Πτυχίο Ψύξης & Κλιματισμού – Επαγγελματικό Λύκειο Κρήτης</li>
                 <li>Τεχνικός Κρεοπώλης – MBS Κρήτης (Διετής πρακτική εκπαίδευση)</li>
@@ -141,8 +169,8 @@
     </section>
     <section class="bg-white/10 backdrop-blur-lg rounded-xl p-8 mb-12 hidden" data-lang-en>
         <h3 class="text-xl font-semibold mb-4 text-blue-300">Education</h3>
-        <div class="flex items-start space-x-4">
-            <img src="education_optimized.png" alt="Education" class="w-20 h-20 rounded-lg flex-shrink-0">
+        <div class="flex items-start flex-row-reverse space-x-4 space-x-reverse">
+            <img src="education_optimized.png" alt="Education" class="w-48 h-auto rounded-lg flex-shrink-0">
             <ul class="list-disc pl-5 space-y-4">
                 <li>Refrigeration & Air Conditioning Diploma – Technical High School of Crete</li>
                 <li>Master Butcher Technician – MBS Crete (2-year vocational training)</li>
@@ -152,8 +180,8 @@
 
     <section class="bg-white/10 backdrop-blur-lg rounded-xl p-8 mb-12" data-lang-gr>
         <h3 class="text-xl font-semibold mb-4 text-blue-300">Γλώσσες</h3>
-        <div class="flex items-start space-x-4">
-            <img src="languages_optimized.png" alt="Γλώσσες" class="w-20 h-20 rounded-lg flex-shrink-0">
+        <div class="flex items-start flex-row-reverse space-x-4 space-x-reverse">
+            <img src="languages_optimized.png" alt="Γλώσσες" class="w-48 h-auto rounded-lg flex-shrink-0">
             <ul class="list-disc pl-5 space-y-4">
                 <li><strong>Ελληνικά:</strong> Άριστη χρήση σε επαγγελματικό & καθημερινό περιβάλλον</li>
                 <li><strong>Αγγλικά:</strong> Πιστοποίηση από Πανεπιστήμιο του Michigan. Χρήση σε καθημερινή βάση σε τουριστικές & επαγγελματικές επαφές</li>
@@ -162,8 +190,8 @@
     </section>
     <section class="bg-white/10 backdrop-blur-lg rounded-xl p-8 mb-12 hidden" data-lang-en>
         <h3 class="text-xl font-semibold mb-4 text-blue-300">Languages</h3>
-        <div class="flex items-start space-x-4">
-            <img src="languages_optimized.png" alt="Languages" class="w-20 h-20 rounded-lg flex-shrink-0">
+        <div class="flex items-start flex-row-reverse space-x-4 space-x-reverse">
+            <img src="languages_optimized.png" alt="Languages" class="w-48 h-auto rounded-lg flex-shrink-0">
             <ul class="list-disc pl-5 space-y-4">
                 <li><strong>Greek:</strong> Fluent in both professional and casual environments</li>
                 <li><strong>English:</strong> Certified by the University of Michigan. Used daily in hospitality and international work</li>
@@ -173,12 +201,12 @@
 
     <section class="bg-white/10 backdrop-blur-lg rounded-xl p-8 mb-12" data-lang-gr>
         <h3 class="text-xl font-semibold mb-4 text-blue-300">Δεξιότητες</h3>
-        <div class="flex items-start space-x-4">
-            <img src="skills_optimized.png" alt="Δεξιότητες" class="w-20 h-20 rounded-lg flex-shrink-0">
+        <div class="flex items-start flex-row-reverse space-x-4 space-x-reverse">
+            <img src="skills_optimized.png" alt="Δεξιότητες" class="w-48 h-auto rounded-lg flex-shrink-0">
             <ul class="list-disc pl-5 space-y-4">
                 <li>Φιλοξενία: Bartending, σερβιτόρος, εξυπηρέτηση πελατών</li>
                 <li>Κρεοπωλική: Παραγωγή, πώληση, ασφάλεια τροφίμων</li>
-                <li>Μεταφορές VIP: Επαγγελματική, διακριτική εξυπηρέτηση</li>
+                <li>Μεταφορές VIP: Επαγγελματική, διακριτική εξυπηρωτηση</li>
                 <li>Επικοινωνία: Διγλωσσία, διαχείριση πελατών, επαφή με ομάδες</li>
                 <li>Προσαρμοστικότητα: Γρήγορη εκμάθηση, ευελιξία σε νέα περιβάλλοντα</li>
             </ul>
@@ -186,8 +214,8 @@
     </section>
     <section class="bg-white/10 backdrop-blur-lg rounded-xl p-8 mb-12 hidden" data-lang-en>
         <h3 class="text-xl font-semibold mb-4 text-blue-300">Skills</h3>
-        <div class="flex items-start space-x-4">
-            <img src="skills_optimized.png" alt="Skills" class="w-20 h-20 rounded-lg flex-shrink-0">
+        <div class="flex items-start flex-row-reverse space-x-4 space-x-reverse">
+            <img src="skills_optimized.png" alt="Skills" class="w-48 h-auto rounded-lg flex-shrink-0">
             <ul class="list-disc pl-5 space-y-4">
                 <li>Hospitality: Bartending, waiter service, customer support</li>
                 <li>Butchery: Meat preparation, sales, food safety</li>
@@ -200,8 +228,8 @@
 
     <section class="bg-white/10 backdrop-blur-lg rounded-xl p-8 mb-12" data-lang-gr>
         <h3 class="text-xl font-semibold mb-4 text-blue-300">Πιστοποιήσεις & Στρατιωτική Θητεία</h3>
-        <div class="flex items-start space-x-4">
-            <img src="certificates_optimized.png" alt="Πιστοποιήσεις & Στρατιωτική Θητεία" class="w-20 h-20 rounded-lg flex-shrink-0">
+        <div class="flex items-start flex-row-reverse space-x-4 space-x-reverse">
+            <img src="certificates_optimized.png" alt="Πιστοποιήσεις & Στρατιωτική Θητεία" class="w-48 h-auto rounded-lg flex-shrink-0">
             <ul class="list-disc pl-5 space-y-4">
                 <li>Άδεια οδήγησης: Αυτοκίνητο & Μηχανή</li>
                 <li>Στρατιωτική Θητεία: Ολοκληρωμένη</li>
@@ -212,8 +240,8 @@
     </section>
     <section class="bg-white/10 backdrop-blur-lg rounded-xl p-8 mb-12 hidden" data-lang-en>
         <h3 class="text-xl font-semibold mb-4 text-blue-300">Certificates & Military Service</h3>
-        <div class="flex items-start space-x-4">
-            <img src="certificates_optimized.png" alt="Certificates & Military Service" class="w-20 h-20 rounded-lg flex-shrink-0">
+        <div class="flex items-start flex-row-reverse space-x-4 space-x-reverse">
+            <img src="certificates_optimized.png" alt="Certificates & Military Service" class="w-48 h-auto rounded-lg flex-shrink-0">
             <ul class="list-disc pl-5 space-y-4">
                 <li>Driving License: Car & Motorbike</li>
                 <li>Military Service: Completed</li>
