@@ -27,17 +27,22 @@
 
     <div id="progressBar" class="fixed top-0 left-0 h-1.5 bg-white z-50" style="width: 0%;"></div>
 
-    <section class="h-screen bg-gradient-to-br from-slate-800 to-slate-900 flex flex-col items-center justify-center text-center px-4">
-        <h1 class="text-5xl font-bold animate-pulse mb-4" data-lang-gr>Καλώς ήρθες!</h1>
-        <h1 class="text-5xl font-bold animate-pulse mb-4 hidden" data-lang-en>Welcome!</h1>
+    <section class="h-screen relative flex flex-col items-center justify-center text-center px-4">
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('my_welcome_background.jpg');"></div>
+        
+        <div class="absolute inset-0 bg-black opacity-40"></div> 
 
-        <p class="text-xl text-slate-300 mb-6" data-lang-gr>Αυτό είναι το ψηφιακό μου βιογραφικό. Εξερεύνησέ το!</p>
-        <p class="text-xl text-slate-300 mb-6 hidden" data-lang-en>This is my digital CV. Feel free to explore!</p>
+        <div class="relative z-10">
+            <h1 class="text-5xl font-bold animate-pulse mb-4" data-lang-gr>Καλώς ήρθες!</h1>
+            <h1 class="text-5xl font-bold animate-pulse mb-4 hidden" data-lang-en>Welcome!</h1>
 
-        <a href="#cv" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full animate-bounce" data-lang-gr>Πάμε!</a>
-        <a href="#cv" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full animate-bounce hidden" data-lang-en>Let's go!</a>
+            <p class="text-xl text-slate-300 mb-6" data-lang-gr>Αυτό είναι το ψηφιακό μου βιογραφικό. Εξερεύνησέ το!</p>
+            <p class="text-xl text-slate-300 mb-6 hidden" data-lang-en>This is my digital CV. Feel free to explore!</p>
+
+            <a href="#cv" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full animate-bounce" data-lang-gr>Πάμε!</a>
+            <a href="#cv" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full animate-bounce hidden" data-lang-en>Let's go!</a>
+        </div>
     </section>
-
     <section class="py-16 bg-slate-900 text-white text-center px-4">
         <h2 class="text-4xl font-bold mb-12" data-lang-gr>Τομείς Εξειδίκευσης</h2>
         <h2 class="text-4xl font-bold mb-12 hidden" data-lang-en>Areas of Expertise</h2>
