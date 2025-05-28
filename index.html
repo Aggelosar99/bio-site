@@ -12,14 +12,20 @@
         }
     </script>
     <style>
-        /* Προαιρετικό: Εξασφαλίζει ομαλή μετάβαση για την μπάρα προόδου */
+        /* Optional: Ensures smooth transition for the progress bar */
         #progressBar {
             transition: width 0.2s ease-out;
         }
-        /* Προσαρμογή του object-fit για τις κυκλικές εικόνες */
+        /* Adjust object-fit for circular images */
         .circular-image {
             object-fit: cover;
             object-position: center;
+        }
+        /* Custom responsive height for image containers in sections for smaller screens */
+        @media (max-width: 767px) { /* Tailind's 'md' breakpoint is 768px */
+            .section-image-container {
+                height: 12rem; /* Adjust as needed for mobile */
+            }
         }
     </style>
 </head>
@@ -32,43 +38,32 @@
         
         <div class="absolute inset-0 bg-black opacity-40"></div> 
 
-        <div class="relative z-10">
-            <h1 class="text-5xl font-bold animate-pulse mb-4" data-lang-gr>Καλώς ήρθες!</h1>
-            <h1 class="text-5xl font-bold animate-pulse mb-4 hidden" data-lang-en>Welcome!</h1>
+        <div class="relative z-10 p-4 sm:p-6 md:p-8"> <h1 class="text-4xl sm:text-5xl font-bold animate-pulse mb-2 sm:mb-4" data-lang-gr>Καλώς ήρθες!</h1> <h1 class="text-4xl sm:text-5xl font-bold animate-pulse mb-2 sm:mb-4 hidden" data-lang-en>Welcome!</h1>
 
-            <p class="text-xl text-slate-300 mb-6" data-lang-gr>Αυτό είναι το ψηφιακό μου βιογραφικό. Εξερεύνησέ το!</p>
-            <p class="text-xl text-slate-300 mb-6 hidden" data-lang-en>This is my digital CV. Feel free to explore!</p>
+            <p class="text-lg sm:text-xl text-slate-300 mb-4 sm:mb-6" data-lang-gr>Αυτό είναι το ψηφιακό μου βιογραφικό. Εξερεύνησέ το!</p> <p class="text-lg sm:text-xl text-slate-300 mb-4 sm:mb-6 hidden" data-lang-en>This is my digital CV. Feel free to explore!</p>
 
-            <a href="#cv" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full animate-bounce" data-lang-gr>Πάμε!</a>
-            <a href="#cv" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full animate-bounce hidden" data-lang-en>Let's go!</a>
+            <a href="#cv" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 sm:py-3 sm:px-6 rounded-full animate-bounce text-base sm:text-lg" data-lang-gr>Πάμε!</a> <a href="#cv" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 sm:py-3 sm:px-6 rounded-full animate-bounce hidden text-base sm:text-lg" data-lang-en>Let's go!</a>
         </div>
     </section>
-    <section class="py-16 bg-slate-900 text-white text-center px-4">
-        <h2 class="text-4xl font-bold mb-12" data-lang-gr>Τομείς Εξειδίκευσης</h2>
-        <h2 class="text-4xl font-bold mb-12 hidden" data-lang-en>Areas of Expertise</h2>
+    
+    <section class="py-12 sm:py-16 bg-slate-900 text-white text-center px-4"> <h2 class="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12" data-lang-gr>Τομείς Εξειδίκευσης</h2> <h2 class="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12 hidden" data-lang-en>Areas of Expertise</h2>
 
-        <div class="flex flex-col md:flex-row justify-center items-start gap-12 max-w-6xl mx-auto">
-
-            <div class="flex flex-col items-center p-4 bg-white/5 backdrop-blur-md rounded-xl transition-shadow duration-300 w-full md:w-1/3">
-                <img src="hospitality_card.jpg" alt="Hospitality" class="w-40 h-40 rounded-full mb-4 circular-image">
-                <h3 class="text-2xl font-semibold mb-2" data-lang-gr>Φιλοξενία</h3>
-                <h3 class="text-2xl font-semibold mb-2 hidden" data-lang-en>Hospitality</h3>
+        <div class="flex flex-col md:flex-row justify-center items-start gap-8 sm:gap-12 max-w-6xl mx-auto"> <div class="flex flex-col items-center p-4 bg-white/5 backdrop-blur-md rounded-xl transition-shadow duration-300 w-full md:w-1/3">
+                <img src="hospitality_card.jpg" alt="Hospitality" class="w-32 h-32 sm:w-40 sm:h-40 rounded-full mb-4 circular-image"> <h3 class="text-xl sm:text-2xl font-semibold mb-2" data-lang-gr>Φιλοξενία</h3>
+                <h3 class="text-xl sm:text-2xl font-semibold mb-2 hidden" data-lang-en>Hospitality</h3>
                 <p class="text-slate-300 text-center text-sm" data-lang-gr>Εμπειρία σε μπαρ και εστιατόρια, με έμφαση στην άριστη εξυπηρέτηση πελατών.</p>
                 <p class="text-slate-300 text-center text-sm hidden" data-lang-en>Experience in bars and restaurants, with a focus on excellent customer service.</p>
             </div>
 
-            <div class="flex flex-col items-center p-6 bg-white/15 backdrop-blur-lg rounded-xl transition-all duration-300 w-full md:w-1/3 transform md:scale-105">
-                <img src="ai_specialist_card.jpg" alt="Junior AI Specialist" class="w-48 h-48 rounded-full mb-4 circular-image">
-                <h3 class="text-3xl font-bold mb-2 text-blue-300" data-lang-gr>Junior AI Specialist</h3>
-                <h3 class="text-3xl font-bold mb-2 text-blue-300 hidden" data-lang-en>Junior AI Specialist</h3>
-                <p class="text-slate-200 text-center text-base" data-lang-gr>Ενδιαφέρον και βασικές γνώσεις σε low-code πλατφόρμες αυτοματισμού και AI, με στόχο την περαιτέρω εξειδίκευση.</p>
-                <p class="text-slate-200 text-center text-base hidden" data-lang-en>Interest and basic knowledge in low-code automation platforms and AI, aiming for further specialization.</p>
+            <div class="flex flex-col items-center p-4 sm:p-6 bg-white/15 backdrop-blur-lg rounded-xl transition-all duration-300 w-full md:w-1/3 transform md:scale-105"> <img src="ai_specialist_card.jpg" alt="Junior AI Specialist" class="w-40 h-40 sm:w-48 sm:h-48 rounded-full mb-4 circular-image"> <h3 class="text-2xl sm:text-3xl font-bold mb-2 text-blue-300" data-lang-gr>Junior AI Specialist</h3>
+                <h3 class="text-2xl sm:text-3xl font-bold mb-2 text-blue-300 hidden" data-lang-en>Junior AI Specialist</h3>
+                <p class="text-slate-200 text-center text-sm sm:text-base" data-lang-gr>Ενδιαφέρον και βασικές γνώσεις σε low-code πλατφόρμες αυτοματισμού και AI, με στόχο την περαιτέρω εξειδίκευση.</p>
+                <p class="text-slate-200 text-center text-sm sm:text-base hidden" data-lang-en>Interest and basic knowledge in low-code automation platforms and AI, aiming for further specialization.</p>
             </div>
 
             <div class="flex flex-col items-center p-4 bg-white/5 backdrop-blur-md rounded-xl transition-shadow duration-300 w-full md:w-1/3">
-                <img src="food_beverage_card.jpg" alt="Food & Beverage" class="w-40 h-40 rounded-full mb-4 circular-image">
-                <h3 class="text-2xl font-semibold mb-2" data-lang-gr>Τομέας Τροφίμων & Ποτών</h3>
-                <h3 class="text-2xl font-semibold mb-2 hidden" data-lang-en>Food & Beverage Sector</h3>
+                <img src="food_beverage_card.jpg" alt="Food & Beverage" class="w-32 h-32 sm:w-40 sm:h-40 rounded-full mb-4 circular-image"> <h3 class="text-xl sm:text-2xl font-semibold mb-2" data-lang-gr>Τομέας Τροφίμων & Ποτών</h3>
+                <h3 class="text-xl sm:text-2xl font-semibold mb-2 hidden" data-lang-en>Food & Beverage Sector</h3>
                 <p class="text-slate-300 text-center text-sm" data-lang-gr>Γνώση κρεοπωλικής και διαχείρισης τροφίμων.</p>
                 <p class="text-slate-300 text-center text-sm hidden" data-lang-en>Knowledge of butchery and food management.</p>
             </div>
@@ -76,43 +71,25 @@
         </div>
     </section>
 
-    <div id="cv" class="max-w-7xl mx-auto px-8 py-12 backdrop-blur-xl bg-white/10 rounded-xl z-10 relative">
-        <header class="text-center mb-10 relative">
-            <div class="absolute top-0 right-0 mt-4 mr-4">
-                <button onclick="toggleLanguage()" class="bg-white text-slate-900 font-semibold px-3 py-1 rounded hover:bg-gray-200">EN / GR</button>
-            </div>
-            <img src="profile_optimized.jpg" alt="Άγγελος Αραπής" class="w-40 h-40 rounded-full mx-auto mb-4">
-            <h1 class="text-3xl font-bold" data-lang-gr>Άγγελος Αραπής</h1>
-            <h1 class="text-3xl font-bold hidden" data-lang-en>Aggelos Arapis</h1>
-            <h2 class="text-lg text-slate-300" data-lang-gr>Automation Developer | Ενθουσιώδης με Low-code</h2>
-            <h2 class="text-lg text-slate-300 hidden" data-lang-en>Automation Developer | Low-code Enthusiast</h2>
+    <div id="cv" class="max-w-full sm:max-w-7xl mx-auto px-4 sm:px-8 py-8 sm:py-12 backdrop-blur-xl bg-white/10 rounded-xl z-10 relative"> <header class="text-center mb-8 sm:mb-10 relative">
+            <div class="absolute top-0 right-0 mt-2 mr-2 sm:mt-4 sm:mr-4"> <button onclick="toggleLanguage()" class="bg-white text-slate-900 font-semibold px-2 py-1 rounded hover:bg-gray-200 text-sm sm:text-base">EN / GR</button> </div>
+            <img src="profile_optimized.jpg" alt="Άγγελος Αραπής" class="w-32 h-32 sm:w-40 sm:h-40 rounded-full mx-auto mb-4"> <h1 class="text-2xl sm:text-3xl font-bold" data-lang-gr>Άγγελος Αραπής</h1> <h1 class="text-2xl sm:text-3xl font-bold hidden" data-lang-en>Aggelos Arapis</h1>
+            <h2 class="text-base sm:text-lg text-slate-300" data-lang-gr>Automation Developer | Ενθουσιώδης με Low-code</h2> <h2 class="text-base sm:text-lg text-slate-300 hidden" data-lang-en>Automation Developer | Low-code Enthusiast</h2>
         </header>
 
-        <section class="bg-white/10 backdrop-blur-lg rounded-xl p-8 mb-12" data-lang-gr>
-    <h3 class="text-xl font-semibold mb-4 text-blue-300">Επαγγελματικό Προφίλ</h3>
-    <div class="flex flex-col md:flex-row items-stretch h-80">
-        <div class="flex-grow pr-4">
-            <p class="text-left">Πολυδιάστατος επαγγελματίας με εμπειρία στον τομέα της φιλοξενίας, της κρεοπωλικής, της μπαρτέντινγκ και των VIP μεταφορών. Γνωστός για την προσαρμοστικότητα, την άριστη επικοινωνία και την ποιοτική εξυπηρέτηση πελατών. Εργατικός, μεθοδικός και πρόθυμος να συμβάλει ουσιαστικά στην επιτυχία κάθε ομάδας.</p>
-        </div>
-        <img src="multitask_professional_optimized.png" alt="Επαγγελματικό Προφίλ" class="w-[28rem] h-full object-cover flex-shrink-0 rounded-lg">
-    </div>
-</section>
-        <section class="bg-white/10 backdrop-blur-lg rounded-xl p-8 mb-12 hidden" data-lang-en>
-    <h3 class="text-xl font-semibold mb-4 text-blue-300">Professional Profile</h3>
-    <div class="flex flex-col md:flex-row items-stretch h-80">
-        <div class="flex-grow pr-4">
-            <p class="text-left">A versatile professional with experience in hospitality, butchery, bartending, and VIP transport. Known for adaptability, excellent communication, and top-tier customer service. Diligent, methodical, and eager to contribute meaningfully to any team.</p>
-        </div>
-        <img src="multitask_professional_optimized.png" alt="Επαγγελματικό Προφίλ" class="w-[28rem] h-full object-cover flex-shrink-0 rounded-lg">
-    </div>
-</section>
+        <section class="bg-white/10 backdrop-blur-lg rounded-xl p-6 sm:p-8 mb-8 sm:mb-12" data-lang-gr> <h3 class="text-lg sm:text-xl font-semibold mb-4 text-blue-300">Επαγγελματικό Προφίλ</h3>
+            <div class="flex flex-col md:flex-row items-stretch h-auto md:h-80 section-image-container"> <div class="flex-grow pr-0 md:pr-4 mb-4 md:mb-0"> <p class="text-left text-sm sm:text-base">Πολυδιάστατος επαγγελματίας με εμπειρία στον τομέα της φιλοξενίας, της κρεοπωλικής, της μπαρτέντινγκ και των VIP μεταφορών. Γνωστός για την προσαρμοστικότητα, την άριστη επικοινωνία και την ποιοτική εξυπηρέτηση πελατών. Εργατικός, μεθοδικός και πρόθυμος να συμβάλει ουσιαστικά στην επιτυχία κάθε ομάδας.</p>
+                </div>
+                <img src="multitask_professional_optimized.png" alt="Επαγγελματικό Προφίλ" class="w-full md:w-[28rem] h-48 md:h-full object-cover flex-shrink-0 rounded-lg mx-auto"> </div>
+        </section>
+        <section class="bg-white/10 backdrop-blur-lg rounded-xl p-6 sm:p-8 mb-8 sm:mb-12 hidden" data-lang-en> <h3 class="text-lg sm:text-xl font-semibold mb-4 text-blue-300">Professional Profile</h3>
+            <div class="flex flex-col md:flex-row items-stretch h-auto md:h-80 section-image-container"> <div class="flex-grow pr-0 md:pr-4 mb-4 md:mb-0"> <p class="text-left text-sm sm:text-base">A versatile professional with experience in hospitality, butchery, bartending, and VIP transport. Known for adaptability, excellent communication, and top-tier customer service. Diligent, methodical, and eager to contribute meaningfully to any team.</p>
+                </div>
+                <img src="multitask_professional_optimized.png" alt="Επαγγελματικό Προφίλ" class="w-full md:w-[28rem] h-48 md:h-full object-cover flex-shrink-0 rounded-lg mx-auto"> </div>
+        </section>
 
-        <section class="bg-white/10 backdrop-blur-lg rounded-xl p-8 mb-12" data-lang-gr>
-            <h3 class="text-xl font-semibold mb-4 text-blue-300">Επαγγελματική Εμπειρία</h3>
-            <div class="flex items-stretch h-80">
-                <div class="flex-grow pr-4">
-                    <ul class="list-disc pl-5 space-y-4 text-left">
-                        <li><strong>Centrum Hotel, Ρέικιαβικ:</strong> Bartender (Μάιος 2024 – σήμερα)</li>
+        <section class="bg-white/10 backdrop-blur-lg rounded-xl p-6 sm:p-8 mb-8 sm:mb-12" data-lang-gr> <h3 class="text-lg sm:text-xl font-semibold mb-4 text-blue-300">Επαγγελματική Εμπειρία</h3>
+            <div class="flex flex-col md:flex-row items-stretch h-auto md:h-80 section-image-container"> <div class="flex-grow pr-0 md:pr-4 mb-4 md:mb-0"> <ul class="list-disc pl-5 space-y-2 sm:space-y-4 text-left text-sm sm:text-base"> <li><strong>Centrum Hotel, Ρέικιαβικ:</strong> Bartender (Μάιος 2024 – σήμερα)</li>
                         <li><strong>American Bar:</strong> Bartender (Νοε 2024 – σήμερα)</li>
                         <li><strong>Beergarden, Ρέικιαβικ:</strong> Bartender (Φεβ 2024 – Οκτ 2024)</li>
                         <li><strong>Εστιατόριο Almira, Σαντορίνη:</strong> Σερβιτόρος (Μάιος – Οκτ 2023)</li>
@@ -121,15 +98,10 @@
                         <li><strong>Πολυτελή Ξενοδοχεία, Κρήτη:</strong> Οδηγός VIP μεταφορών (2019 – 2021)</li>
                     </ul>
                 </div>
-                <img src="work_experience_optimized.png" alt="Επαγγελματική Εμπειρία" class="w-[28rem] h-full object-cover flex-shrink-0 rounded-lg">
-            </div>
+                <img src="work_experience_optimized.png" alt="Επαγγελματική Εμπειρία" class="w-full md:w-[28rem] h-48 md:h-full object-cover flex-shrink-0 rounded-lg mx-auto"> </div>
         </section>
-        <section class="bg-white/10 backdrop-blur-lg rounded-xl p-8 mb-12 hidden" data-lang-en>
-            <h3 class="text-xl font-semibold mb-4 text-blue-300">Professional Experience</h3>
-            <div class="flex items-stretch h-80">
-                <div class="flex-grow pr-4">
-                    <ul class="list-disc pl-5 space-y-4 text-left">
-                        <li><strong>Centrum Hotel, Reykjavik:</strong> Bartender (May 2024 – Present)</li>
+        <section class="bg-white/10 backdrop-blur-lg rounded-xl p-6 sm:p-8 mb-8 sm:mb-12 hidden" data-lang-en> <h3 class="text-lg sm:text-xl font-semibold mb-4 text-blue-300">Professional Experience</h3>
+            <div class="flex flex-col md:flex-row items-stretch h-auto md:h-80 section-image-container"> <div class="flex-grow pr-0 md:pr-4 mb-4 md:mb-0"> <ul class="list-disc pl-5 space-y-2 sm:space-y-4 text-left text-sm sm:text-base"> <li><strong>Centrum Hotel, Reykjavik:</strong> Bartender (May 2024 – Present)</li>
                         <li><strong>American Bar:</strong> Bartender (Nov 2024 – Present)</li>
                         <li><strong>Beergarden, Reykjavik:</strong> Bartender (Feb 2024 – Oct 2024)</li>
                         <li><strong>Almira Restaurant, Santorini:</strong> Waiter (May – Oct 2023)</li>
@@ -138,147 +110,92 @@
                         <li><strong>Luxury Hotels, Crete:</strong> VIP Transfer Driver (2019 – 2021)</li>
                     </ul>
                 </div>
-                <img src="work_experience_optimized.png" alt="Επαγγελματική Εμπειρία" class="w-[28rem] h-full object-cover flex-shrink-0 rounded-lg">
-            </div>
+                <img src="work_experience_optimized.png" alt="Professional Experience" class="w-full md:w-[28rem] h-48 md:h-full object-cover flex-shrink-0 rounded-lg mx-auto"> </div>
         </section>
 
-        <section class="bg-white/10 backdrop-blur-lg rounded-xl p-8 mb-12" data-lang-gr>
-            <h3 class="text-xl font-semibold mb-4 text-blue-300">Εκπαίδευση</h3>
-            <div class="flex items-stretch h-80">
-                <div class="flex-grow pr-4">
-                    <ul class="list-disc pl-5 space-y-4 text-left">
-                        <li>Απόφοιτος Λυκείου</li>
+        <section class="bg-white/10 backdrop-blur-lg rounded-xl p-6 sm:p-8 mb-8 sm:mb-12" data-lang-gr> <h3 class="text-lg sm:text-xl font-semibold mb-4 text-blue-300">Εκπαίδευση</h3>
+            <div class="flex flex-col md:flex-row items-stretch h-auto md:h-80 section-image-container"> <div class="flex-grow pr-0 md:pr-4 mb-4 md:mb-0"> <ul class="list-disc pl-5 space-y-2 sm:space-y-4 text-left text-sm sm:text-base"> <li>Απόφοιτος Λυκείου</li>
                         <li>Πτυχίο Ψύξης & Κλιματισμού – Επαγγελματικό Λύκειο Κρήτης</li>
                         <li>Τεχνικός Κρεοπώλης – MBS Κρήτης (Διετής πρακτική εκπαίδευση)</li>
                     </ul>
                 </div>
-                <img src="education_optimized.png" alt="Εκπαίδευση" class="w-[28rem] h-full object-cover flex-shrink-0 rounded-lg">
-            </div>
+                <img src="education_optimized.png" alt="Εκπαίδευση" class="w-full md:w-[28rem] h-48 md:h-full object-cover flex-shrink-0 rounded-lg mx-auto"> </div>
         </section>
-        <section class="bg-white/10 backdrop-blur-lg rounded-xl p-8 mb-12 hidden" data-lang-en>
-            <h3 class="text-xl font-semibold mb-4 text-blue-300">Education</h3>
-            <div class="flex items-stretch h-80">
-                <div class="flex-grow pr-4">
-                    <ul class="list-disc pl-5 space-y-4 text-left">
-                        <li>High School Graduate</li>
+        <section class="bg-white/10 backdrop-blur-lg rounded-xl p-6 sm:p-8 mb-8 sm:mb-12 hidden" data-lang-en> <h3 class="text-lg sm:text-xl font-semibold mb-4 text-blue-300">Education</h3>
+            <div class="flex flex-col md:flex-row items-stretch h-auto md:h-80 section-image-container"> <div class="flex-grow pr-0 md:pr-4 mb-4 md:mb-0"> <ul class="list-disc pl-5 space-y-2 sm:space-y-4 text-left text-sm sm:text-base"> <li>High School Graduate</li>
                         <li>Refrigeration & Air Conditioning Diploma – Technical High School of Crete</li>
                         <li>Master Butcher Technician – MBS Crete (2-year vocational training)</li>
                     </ul>
                 </div>
-                <img src="education_optimized.png" alt="Εκπαίδευση" class="w-80 h-full object-cover flex-shrink-0 rounded-lg">
-            </div>
+                <img src="education_optimized.png" alt="Education" class="w-full md:w-[28rem] h-48 md:h-full object-cover flex-shrink-0 rounded-lg mx-auto"> </div>
         </section>
 
-        <section class="bg-white/10 backdrop-blur-lg rounded-xl p-8 mb-12" data-lang-gr>
-            <h3 class="text-xl font-semibold mb-4 text-blue-300">Γλώσσες</h3>
-            <div class="flex items-stretch h-80">
-                <div class="flex-grow pr-4">
-                    <ul class="list-disc pl-5 space-y-4 text-left">
-                        <li><strong>Ελληνικά:</strong> Άριστη χρήση σε επαγγελματικό & καθημερινό περιβάλλον</li>
+        <section class="bg-white/10 backdrop-blur-lg rounded-xl p-6 sm:p-8 mb-8 sm:mb-12" data-lang-gr> <h3 class="text-lg sm:text-xl font-semibold mb-4 text-blue-300">Γλώσσες</h3>
+            <div class="flex flex-col md:flex-row items-stretch h-auto md:h-80 section-image-container"> <div class="flex-grow pr-0 md:pr-4 mb-4 md:mb-0"> <ul class="list-disc pl-5 space-y-2 sm:space-y-4 text-left text-sm sm:text-base"> <li><strong>Ελληνικά:</strong> Άριστη χρήση σε επαγγελματικό & καθημερινό περιβάλλον</li>
                         <li><strong>Αγγλικά:</strong> Πιστοποίηση από Πανεπιστήμιο του Michigan. Χρήση σε καθημερινή βάση σε τουριστικές & επαγγελματικές επαφές</li>
                     </ul>
                 </div>
-                <img src="languages_optimized.png" alt="Γλώσσες" class="w-[28rem] h-full object-cover flex-shrink-0 rounded-lg">
-            </div>
+                <img src="languages_optimized.png" alt="Γλώσσες" class="w-full md:w-[28rem] h-48 md:h-full object-cover flex-shrink-0 rounded-lg mx-auto"> </div>
         </section>
-        <section class="bg-white/10 backdrop-blur-lg rounded-xl p-8 mb-12 hidden" data-lang-en>
-            <h3 class="text-xl font-semibold mb-4 text-blue-300">Languages</h3>
-            <div class="flex items-stretch h-80">
-                <div class="flex-grow pr-4">
-                    <ul class="list-disc pl-5 space-y-4 text-left">
-                        <li><strong>Greek:</strong> Fluent in both professional and casual environments</li>
+        <section class="bg-white/10 backdrop-blur-lg rounded-xl p-6 sm:p-8 mb-8 sm:mb-12 hidden" data-lang-en> <h3 class="text-lg sm:text-xl font-semibold mb-4 text-blue-300">Languages</h3>
+            <div class="flex flex-col md:flex-row items-stretch h-auto md:h-80 section-image-container"> <div class="flex-grow pr-0 md:pr-4 mb-4 md:mb-0"> <ul class="list-disc pl-5 space-y-2 sm:space-y-4 text-left text-sm sm:text-base"> <li><strong>Greek:</strong> Fluent in both professional and casual environments</li>
                         <li><strong>English:</strong> Certified by the University of Michigan. Used daily in hospitality and international work</li>
                     </ul>
                 </div>
-                <img src="languages_optimized.png" alt="Γλώσσες" class="w-80 h-full object-cover flex-shrink-0 rounded-lg">
-            </div>
+                <img src="languages_optimized.png" alt="Languages" class="w-full md:w-[28rem] h-48 md:h-full object-cover flex-shrink-0 rounded-lg mx-auto"> </div>
         </section>
 
-        <section class="bg-white/10 backdrop-blur-lg rounded-xl p-8 mb-12" data-lang-gr>
-            <h3 class="text-xl font-semibold mb-4 text-blue-300">Δεξιότητες</h3>
-            <div class="flex items-stretch h-80">
-                <div class="flex-grow pr-4">
-                    <ul class="list-disc pl-5 space-y-4 text-left">
-                        <li>Φιλοξενία: Bartending, σερβιτόρος, εξυπηρέτηση πελατών</li>
+        <section class="bg-white/10 backdrop-blur-lg rounded-xl p-6 sm:p-8 mb-8 sm:mb-12" data-lang-gr> <h3 class="text-lg sm:text-xl font-semibold mb-4 text-blue-300">Δεξιότητες</h3>
+            <div class="flex flex-col md:flex-row items-stretch h-auto md:h-80 section-image-container"> <div class="flex-grow pr-0 md:pr-4 mb-4 md:mb-0"> <ul class="list-disc pl-5 space-y-2 sm:space-y-4 text-left text-sm sm:text-base"> <li>Φιλοξενία: Bartending, σερβιτόρος, εξυπηρέτηση πελατών</li>
                         <li>Κρεοπωλική: Παραγωγή, πώληση, ασφάλεια τροφίμων</li>
                         <li>Μεταφορές VIP: Επαγγελματική, διακριτική εξυπηρέτηση</li>
                         <li>Επικοινωνία: Διγλωσσία, διαχείριση πελατών, επαφή με ομάδες</li>
                         <li>Προσαρμοστικότητα: Γρήγορη εκμάθηση, ευελιξία σε νέα περιβάλλοντα</li>
                     </ul>
                 </div>
-                <img src="skills_optimized.png" alt="Δεξιότητες" class="w-[28rem] h-full object-cover flex-shrink-0 rounded-lg">
-            </div>
+                <img src="skills_optimized.png" alt="Δεξιότητες" class="w-full md:w-[28rem] h-48 md:h-full object-cover flex-shrink-0 rounded-lg mx-auto"> </div>
         </section>
-        <section class="bg-white/10 backdrop-blur-lg rounded-xl p-8 mb-12 hidden" data-lang-en>
-            <h3 class="text-xl font-semibold mb-4 text-blue-300">Skills</h3>
-            <div class="flex items-stretch h-80">
-                <div class="flex-grow pr-4">
-                    <ul class="list-disc pl-5 space-y-4 text-left">
-                        <li>Hospitality: Bartending, waiter service, customer support</li>
+        <section class="bg-white/10 backdrop-blur-lg rounded-xl p-6 sm:p-8 mb-8 sm:mb-12 hidden" data-lang-en> <h3 class="text-lg sm:text-xl font-semibold mb-4 text-blue-300">Skills</h3>
+            <div class="flex flex-col md:flex-row items-stretch h-auto md:h-80 section-image-container"> <div class="flex-grow pr-0 md:pr-4 mb-4 md:mb-0"> <ul class="list-disc pl-5 space-y-2 sm:space-y-4 text-left text-sm sm:text-base"> <li>Hospitality: Bartending, waiter service, customer support</li>
                         <li>Butchery: Meat preparation, sales, food safety</li>
                         <li>VIP Transport: Professional, discreet service</li>
                         <li>Communication: Bilingual, client handling, team interaction</li>
                         <li>Adaptability: Fast learner, flexible in new environments</li>
                     </ul>
                 </div>
-                <img src="skills_optimized.png" alt="Δεξιότητες" class="w-80 h-full object-cover flex-shrink-0 rounded-lg">
-            </div>
+                <img src="skills_optimized.png" alt="Skills" class="w-full md:w-[28rem] h-48 md:h-full object-cover flex-shrink-0 rounded-lg mx-auto"> </div>
         </section>
 
-        <section class="bg-white/10 backdrop-blur-lg rounded-xl p-8 mb-12" data-lang-gr>
-            <h3 class="text-xl font-semibold mb-4 text-blue-300">Πιστοποιήσεις & Στρατιωτική Θητεία</h3>
-            <div class="flex items-stretch h-80">
-                <div class="flex-grow pr-4">
-                    <ul class="list-disc pl-5 space-y-4 text-left">
-                        <li>Άδεια οδήγησης: Αυτοκίνητο & Μηχανή</li>
+        <section class="bg-white/10 backdrop-blur-lg rounded-xl p-6 sm:p-8 mb-8 sm:mb-12" data-lang-gr> <h3 class="text-lg sm:text-xl font-semibold mb-4 text-blue-300">Πιστοποιήσεις & Στρατιωτική Θητεία</h3>
+            <div class="flex flex-col md:flex-row items-stretch h-auto md:h-80 section-image-container"> <div class="flex-grow pr-0 md:pr-4 mb-4 md:mb-0"> <ul class="list-disc pl-5 space-y-2 sm:space-y-4 text-left text-sm sm:text-base"> <li>Άδεια οδήγησης: Αυτοκίνητο & Μηχανή</li>
                         <li>Στρατιωτική Θητεία: Ολοκληρωμένη</li>
                         <li>Ημερομηνία Γέννησης: 11/01/1999</li>
                         <li>Τοποθεσία: Ρέικιαβικ, Ισλανδία</li>
                     </ul>
                 </div>
-                <img src="certificates_optimized.png" alt="Πιστοποιήσεις & Στρατιωτική Θητεία" class="w-[28rem] h-full object-cover flex-shrink-0 rounded-lg">
-            </div>
+                <img src="certificates_optimized.png" alt="Πιστοποιήσεις & Στρατιωτική Θητεία" class="w-full md:w-[28rem] h-48 md:h-full object-cover flex-shrink-0 rounded-lg mx-auto"> </div>
         </section>
-        <section class="bg-white/10 backdrop-blur-lg rounded-xl p-8 mb-12 hidden" data-lang-en>
-            <h3 class="text-xl font-semibold mb-4 text-blue-300">Certificates & Military Service</h3>
-            <div class="flex items-stretch h-80">
-                <div class="flex-grow pr-4">
-                    <ul class="list-disc pl-5 space-y-4 text-left">
-                        <li>Driving License: Car & Motorbike</li>
+        <section class="bg-white/10 backdrop-blur-lg rounded-xl p-6 sm:p-8 mb-8 sm:mb-12 hidden" data-lang-en> <h3 class="text-lg sm:text-xl font-semibold mb-4 text-blue-300">Certificates & Military Service</h3>
+            <div class="flex flex-col md:flex-row items-stretch h-auto md:h-80 section-image-container"> <div class="flex-grow pr-0 md:pr-4 mb-4 md:mb-0"> <ul class="list-disc pl-5 space-y-2 sm:space-y-4 text-left text-sm sm:text-base"> <li>Driving License: Car & Motorbike</li>
                         <li>Military Service: Completed</li>
                         <li>Date of Birth: 11/01/1999</li>
                         <li>Location: Reykjavik, Iceland</li>
                     </ul>
                 </div>
-                <img src="certificates_optimized.png" alt="Πιστοποιήσεις & Στρατιωτική Θητεία" class="w-80 h-full object-cover flex-shrink-0 rounded-lg">
-            </div>
+                <img src="certificates_optimized.png" alt="Certificates & Military Service" class="w-full md:w-[28rem] h-48 md:h-full object-cover flex-shrink-0 rounded-lg mx-auto"> </div>
         </section>
 
-        <section class="max-w-xl mx-auto mt-12 bg-white/10 backdrop-blur-lg rounded-xl p-8" data-lang-gr>
-            <h3 class="text-xl font-semibold mb-4 text-blue-300">Επικοινωνία</h3>
-            <form name="contact" method="POST" netlify class="space-y-4">
-                <input type="text" name="name" placeholder="Όνομά σου" required class="w-full p-3 border border-gray-700 bg-gray-800 text-white rounded focus:ring-blue-500 focus:border-blue-500">
-                <input type="email" name="email" placeholder="Email" required class="w-full p-3 border border-gray-700 bg-gray-800 text-white rounded focus:ring-blue-500 focus:border-blue-500">
-                <textarea name="message" placeholder="Μήνυμα" required class="w-full p-3 border border-gray-700 bg-gray-800 text-white rounded h-32 resize-y focus:ring-blue-500 focus:border-blue-500"></textarea>
-                <button type="submit" class="bg-blue-600 text-white font-bold px-6 py-3 rounded hover:bg-blue-700 transition-colors duration-200">Αποστολή</button>
-            </form>
-            <div class="mt-6 text-lg">
-                <p class="mb-2">Email: <a href="mailto:aggelosar2@gmail.com" class="text-blue-400 hover:underline">aggelosar2@gmail.com</a></p>
-                <p class="mb-2">Τηλέφωνο: <span class="text-blue-400">+354 7665049</span></p>
+        <section class="max-w-full sm:max-w-xl mx-auto mt-8 sm:mt-12 bg-white/10 backdrop-blur-lg rounded-xl p-6 sm:p-8" data-lang-gr> <h3 class="text-lg sm:text-xl font-semibold mb-4 text-blue-300">Επικοινωνία</h3>
+            <form name="contact" method="POST" netlify class="space-y-3 sm:space-y-4"> <input type="text" name="name" placeholder="Όνομά σου" required class="w-full p-2 sm:p-3 border border-gray-700 bg-gray-800 text-white rounded focus:ring-blue-500 focus:border-blue-500 text-sm sm:text-base"> <input type="email" name="email" placeholder="Email" required class="w-full p-2 sm:p-3 border border-gray-700 bg-gray-800 text-white rounded focus:ring-blue-500 focus:border-blue-500 text-sm sm:text-base"> <textarea name="message" placeholder="Μήνυμα" required class="w-full p-2 sm:p-3 border border-gray-700 bg-gray-800 text-white rounded h-24 sm:h-32 resize-y focus:ring-blue-500 focus:border-blue-500 text-sm sm:text-base"></textarea> <button type="submit" class="bg-blue-600 text-white font-bold px-4 py-2 sm:px-6 sm:py-3 rounded hover:bg-blue-700 transition-colors duration-200 text-base sm:text-lg">Αποστολή</button> </form>
+            <div class="mt-4 sm:mt-6 text-base sm:text-lg"> <p class="mb-1 sm:mb-2">Email: <a href="mailto:aggelosar2@gmail.com" class="text-blue-400 hover:underline">aggelosar2@gmail.com</a></p>
+                <p class="mb-1 sm:mb-2">Τηλέφωνο: <span class="text-blue-400">+354 7665049</span></p>
                 <p>GitHub: <a href="https://github.com/aggelosaraparis" target="_blank" class="text-blue-400 hover:underline">github.com/aggelosaraparis</a></p>
             </div>
         </section>
-        <section class="max-w-xl mx-auto mt-12 bg-white/10 backdrop-blur-lg rounded-xl p-8 hidden" data-lang-en>
-            <h3 class="text-xl font-semibold mb-4 text-blue-300">Contact</h3>
-            <form name="contact-en" method="POST" netlify class="space-y-4">
-                <input type="text" name="name" placeholder="Your Name" required class="w-full p-3 border border-gray-700 bg-gray-800 text-white rounded focus:ring-blue-500 focus:border-blue-500">
-                <input type="email" name="email" placeholder="Email" required class="w-full p-3 border border-gray-700 bg-gray-800 text-white rounded focus:ring-blue-500 focus:border-blue-500">
-                <textarea name="message" placeholder="Message" required class="w-full p-3 border border-gray-700 bg-gray-800 text-white rounded h-32 resize-y focus:ring-blue-500 focus:border-blue-500"></textarea>
-                <button type="submit" class="bg-blue-600 text-white font-bold px-6 py-3 rounded hover:bg-blue-700 transition-colors duration-200">Send</button>
-            </form>
-            <div class="mt-6 text-lg">
-                <p class="mb-2">Email: <a href="mailto:aggelosar2@gmail.com" class="text-blue-400 hover:underline">aggelosar2@gmail.com</a></p>
-                <p class="mb-2">Phone: <span class="text-blue-400">+354 7665049</span></p>
+        <section class="max-w-full sm:max-w-xl mx-auto mt-8 sm:mt-12 bg-white/10 backdrop-blur-lg rounded-xl p-6 sm:p-8 hidden" data-lang-en> <h3 class="text-lg sm:text-xl font-semibold mb-4 text-blue-300">Contact</h3>
+            <form name="contact-en" method="POST" netlify class="space-y-3 sm:space-y-4"> <input type="text" name="name" placeholder="Your Name" required class="w-full p-2 sm:p-3 border border-gray-700 bg-gray-800 text-white rounded focus:ring-blue-500 focus:border-blue-500 text-sm sm:text-base"> <input type="email" name="email" placeholder="Email" required class="w-full p-2 sm:p-3 border border-gray-700 bg-gray-800 text-white rounded focus:ring-blue-500 focus:border-blue-500 text-sm sm:text-base"> <textarea name="message" placeholder="Message" required class="w-full p-2 sm:p-3 border border-gray-700 bg-gray-800 text-white rounded h-24 sm:h-32 resize-y focus:ring-blue-500 focus:border-blue-500 text-sm sm:text-base"></textarea> <button type="submit" class="bg-blue-600 text-white font-bold px-4 py-2 sm:px-6 sm:py-3 rounded hover:bg-blue-700 transition-colors duration-200 text-base sm:text-lg">Send</button> </form>
+            <div class="mt-4 sm:mt-6 text-base sm:text-lg"> <p class="mb-1 sm:mb-2">Email: <a href="mailto:aggelosar2@gmail.com" class="text-blue-400 hover:underline">aggelosar2@gmail.com</a></p>
+                <p class="mb-1 sm:mb-2">Phone: <span class="text-blue-400">+354 7665049</span></p>
                 <p>GitHub: <a href="https://github.com/aggelosaraparis" target="_blank" class="text-blue-400 hover:underline">github.com/aggelosaraparis</a></p>
             </div>
         </section>
