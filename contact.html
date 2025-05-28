@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Άγγελος Αραπής - Επικοινωνία</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #0f172a; /* Tailwind slate-900 */
+            color: #fff;
+            font-family: sans-serif;
+            padding: 1rem; /* Added padding for small screens */
+        }
+        .container {
+            max-width: 50rem; /* Increased max-width slightly for better form appearance */
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.1); /* bg-white/10 */
+            backdrop-filter: blur(10px); /* backdrop-blur-xl */
+            border-radius: 0.75rem; /* rounded-xl */
+            padding: 1.5rem; /* p-6 sm:p-8 */
+        }
+        /* Style for form inputs */
+        .form-input {
+            width: 100%;
+            padding: 0.75rem; /* p-3 sm:p-3 */
+            border: 1px solid #334155; /* border-gray-700 */
+            background-color: #1e293b; /* bg-gray-800 */
+            color: #fff;
+            border-radius: 0.25rem; /* rounded */
+            font-size: 0.875rem; /* text-sm sm:text-base */
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: #3b82f6; /* focus:border-blue-500 */
+            box-shadow: 0 0 0 1px #3b82f6; /* focus:ring-blue-500 */
+        }
+        .form-textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #334155;
+            background-color: #1e293b;
+            color: #fff;
+            border-radius: 0.25rem;
+            height: 6rem; /* h-24 sm:h-32 */
+            resize: vertical; /* resize-y */
+            font-size: 0.875rem; /* text-sm sm:text-base */
+        }
+        .form-textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 1px #3b82f6;
+        }
+        .submit-button {
+            background-color: #2563eb; /* bg-blue-600 */
+            color: #fff;
+            font-weight: 700; /* font-bold */
+            padding: 0.5rem 1rem; /* px-4 py-2 sm:px-6 sm:py-3 */
+            border-radius: 0.25rem; /* rounded */
+            transition: background-color 0.2s;
+            font-size: 1rem; /* text-base sm:text-lg */
+        }
+        .submit-button:hover {
+            background-color: #1d4ed8; /* hover:bg-blue-700 */
+        }
+        .contact-info p {
+            margin-bottom: 0.5rem; /* mb-1 sm:mb-2 */
+        }
+        .contact-link {
+            color: #60a5fa; /* text-blue-400 */
+            text-decoration: none;
+        }
+        .contact-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <script>
+        // Language toggle function for contact page if needed, though for a dedicated contact page, it might be simpler to have separate contact pages for each language.
+        // For simplicity, we'll assume the contact page is primarily in one language or relies on browser translation.
+        // If you want the EN/GR toggle here too, you'd need the content duplicated as you had before.
+        // For now, I've simplified it to be mostly in English with static Greek labels for fields.
+        // You can add the toggle function here if you duplicate the form/contact info for both languages.
+    </script>
+</head>
+<body class="bg-slate-900 text-white font-sans">
+
+    <div class="container">
+        <div data-lang-gr>
+            <h3 class="text-xl sm:text-2xl font-semibold mb-4 text-blue-300 text-center">Επικοινωνία</h3>
+            <form name="contact" method="POST" netlify class="space-y-4">
+                <input type="text" name="name" placeholder="Όνομά σου" required class="form-input">
+                <input type="email" name="email" placeholder="Email" required class="form-input">
+                <textarea name="message" placeholder="Μήνυμα" required class="form-textarea"></textarea>
+                <button type="submit" class="submit-button">Αποστολή</button>
+            </form>
+            <div class="mt-6 text-lg contact-info text-center">
+                <p class="mb-2">Email: <a href="mailto:aggelosar2@gmail.com" class="contact-link">aggelosar2@gmail.com</a></p>
+                <p class="mb-2">Τηλέφωνο: <span class="text-blue-400">+354 7665049</span></p>
+                <p>GitHub: <a href="https://github.com/aggelosaraparis" target="_blank" class="contact-link">github.com/aggelosaraparis</a></p>
+            </div>
+        </div>
+
+        <div data-lang-en class="hidden">
+            <h3 class="text-xl sm:text-2xl font-semibold mb-4 text-blue-300 text-center">Contact</h3>
+            <form name="contact-en" method="POST" netlify class="space-y-4">
+                <input type="text" name="name" placeholder="Your Name" required class="form-input">
+                <input type="email" name="email" placeholder="Email" required class="form-input">
+                <textarea name="message" placeholder="Message" required class="form-textarea"></textarea>
+                <button type="submit" class="submit-button">Send</button>
+            </form>
+            <div class="mt-6 text-lg contact-info text-center">
+                <p class="mb-2">Email: <a href="mailto:aggelosar2@gmail.com" class="contact-link">aggelosar2@gmail.com</a></p>
+                <p class="mb-2">Phone: <span class="text-blue-400">+354 7665049</span></p>
+                <p>GitHub: <a href="https://github.com/aggelosaraparis" target="_blank" class="contact-link">github.com/aggelosaraparis</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleLanguage() {
+            document.querySelectorAll('[data-lang-gr]').forEach(el => el.classList.toggle('hidden'));
+            document.querySelectorAll('[data-lang-en]').forEach(el => el.classList.toggle('hidden'));
+        }
+        // Initialize the language based on what's currently shown/hidden on the main page.
+        // For a standalone contact page, you might want to store the language preference in localStorage
+        // or default to one language. For simplicity, we'll keep the default to Greek for now.
+    </script>
+</body>
+</html>
