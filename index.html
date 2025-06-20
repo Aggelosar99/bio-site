@@ -1,221 +1,291 @@
+<!-- Existing HTML content will be replaced -->
+<!-- Make sure you have img/profile_optimized.jpg in your project -->
 <!DOCTYPE html>
-<html lang="el">
+<html lang="el"> <!-- Ορισμός γλώσσas σε Ελληνικά -->
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Άγγελος Αραπής - Βιογραφικό</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Άγγελος Αραπής - CV</title>
+    <!-- TailwindCSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        function toggleLanguage() {
-            document.querySelectorAll('[data-lang-gr]').forEach(el => el.classList.toggle('hidden'));
-            document.querySelectorAll('[data-lang-en]').forEach(el => el.classList.toggle('hidden'));
-        }
-    </script>
     <style>
-        /* Optional: Ensures smooth transition for the progress bar */
-        #progressBar {
-            transition: width 0.2s ease-out;
+        /* Custom scrollbar (προαιρετικό, για αισθητική παρόμοια με kkatsaras.gr) */
+        body::-webkit-scrollbar {
+            width: 8px;
         }
-        /* Adjust object-fit for circular images */
-        .circular-image {
-            object-fit: cover;
-            object-position: center;
+        body::-webkit-scrollbar-track {
+            background: #1a202c; /* Σκούρο χρώμα για το track */
         }
-        /* Custom responsive height for image containers in sections for smaller screens */
-        @media (max-width: 767px) { /* Tailind's 'md' breakpoint is 768px */
-            .section-image-container {
-                height: 12rem; /* Adjust as needed for mobile */
-            }
+        body::-webkit-scrollbar-thumb {
+            background-color: #4a5568; /* Γκρι χρώμα για το thumb */
+            border-radius: 20px;
+            border: 2px solid #1a202c;
+        }
+
+        /* Βασικό στυλ για στοιχεία που θα εμφανίζονται με animation */
+        .scroll-animate {
+            opacity: 0;
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+        .scroll-animate.slide-from-left {
+            transform: translateX(-40px); /* Αρχική θέση για slide-in από αριστερά */
+        }
+        .scroll-animate.slide-from-right {
+            transform: translateX(40px); /* Αρχική θέση για slide-in από δεξιά */
+        }
+        .scroll-animate.is-visible {
+            opacity: 1;
+            transform: translateX(0); /* Τελική θέση μετά το animation */
+        }
+
+        /* Σκούρο φόντο για το body, παρόμοιο με το kkatsaras.gr */
+        body {
+            background-color: #0d1117; /* Πολύ σκούρο γκρι, σχεδόν μαύρο */
+            color: #c9d1d9; /* Ανοιχτό γκρι για το βασικό κείμενο */
+        }
+
+        /* Εξασφάλιση αναγνωσιμότητας κειμένου μέσα στις glassmorphism ενότητες (που δεν έχουν full background image) */
+        .glass-section p, .glass-section li, .glass-section h3, .glass-section a:not(.button-link) {
+            color: #e5e7eb; /* Ανοιχτότερο γκρι για κείμενο εντός των καρτών */
+        }
+        .glass-section h2 {
+            color: #ffffff; /* Λευκό για τους τίτλους για μεγαλύτερη έμφαση */
+        }
+        .glass-section .text-accent {
+            color: #7dd3fc; /* Ανοιχτό γαλάζιο για δευτερεύουσες πληροφορίες (π.χ. εταιρεία, πανεπιστήμιο) */
+        }
+        /* Γενική κλάση για χρώμα έμφασης, θα χρησιμοποιηθεί και στα overlays */
+        .text-accent {
+            color: #7dd3fc;
         }
     </style>
 </head>
-<body class="bg-slate-900 text-white font-sans">
+<body class="font-sans antialiased px-6 py-12">
 
-    <div id="progressBar" class="fixed top-0 left-0 h-1.5 bg-white z-50" style="width: 0%;"></div>
+    <!-- Placeholder για το κουμπί εναλλαγής γλώσσας (EN/GR) - όπως αναφέρεται στο todo.md -->
+    <div id="scroll-progress-bar" class="fixed top-0 left-0 h-1 bg-sky-500 w-0 z-[9999]"></div> <!-- Scroll Progress Bar -->
+    <div class="fixed top-4 right-4 z-[50]"> <!-- Εξασφάλιση ότι το z-index είναι μικρότερο από το progress bar -->
+        <button id="lang-toggle" class="bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-lg shadow-md hover:bg-white/30 transition-colors">
+            EN/GR
+        </button>
+    </div>
+ 
+    <!-- Hero Section -->
+    <header class="text-center mb-20 md:mb-32 pt-16 md:pt-24">
+        <!-- Εικόνα Προφίλ -->
+        <img src="img/profile_optimized.jpg" alt="Άγγελος Αραπής"
+             class="w-40 h-40 md:w-56 md:h-56 rounded-full mx-auto mb-8 shadow-2xl border-4 border-white/20 object-cover">
 
-    <section class="h-screen relative flex flex-col items-center justify-center text-center px-4">
-        <div class="absolute inset-0 bg-cover bg-center" ></div>
+        <!-- Όνομα -->
+        <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">  <!-- Changed size from text-5xl md:text-7xl -->
         
-        <div class="absolute inset-0 bg-black opacity-40"></div>
+            <span data-lang="gr">Άγγελος Αραπής</span>
+            <span data-lang="en" style="display:none;">Angelos Arapis</span>
+        </h1>
 
-        <div class="relative z-10 p-4 sm:p-6 md:p-8"> <h1 class="text-4xl sm:text-5xl font-bold animate-pulse mb-2 sm:mb-4" data-lang-gr>Καλώς ήρθες!</h1> <h1 class="text-4xl sm:text-5xl font-bold animate-pulse mb-2 sm:mb-4 hidden" data-lang-en>Welcome!</h1>
-
-            <p class="text-lg sm:text-xl text-slate-300 mb-4 sm:mb-6" data-lang-gr>Αυτό είναι το ψηφιακό μου βιογραφικό. Εξερεύνησέ το!</p> <p class="text-lg sm:text-xl text-slate-300 mb-4 sm:mb-6 hidden" data-lang-en>This is my digital CV. Feel free to explore!</p>
-
-            <a href="#cv" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 sm:py-3 sm:px-6 rounded-full animate-bounce text-base sm:text-lg" data-lang-gr>Πάμε!</a> <a href="#cv" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 sm:py-3 sm:px-6 rounded-full animate-bounce hidden text-base sm:text-lg" data-lang-en>Let's go!</a>
-        </div>
-    </section>
-    
-    <section class="py-12 sm:py-16 bg-slate-900 text-white text-center px-4"> <h2 class="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12" data-lang-gr>Τομείς Εξειδίκευσης</h2> <h2 class="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12 hidden" data-lang-en>Areas of Expertise</h2>
-
-        <div class="flex flex-col md:flex-row justify-center items-start gap-8 sm:gap-12 max-w-6xl mx-auto"> <div class="flex flex-col items-center p-4 bg-white/5 backdrop-blur-md rounded-xl transition-shadow duration-300 w-full md:w-1/3">
-                <h3 class="text-xl sm:text-2xl font-semibold mb-2" data-lang-gr>Φιλοξενία</h3>
-                <h3 class="text-xl sm:text-2xl font-semibold mb-2 hidden" data-lang-en>Hospitality</h3>
-                <p class="text-slate-300 text-center text-sm" data-lang-gr>Εμπειρία σε μπαρ και εστιατόρια, με έμφαση στην άριστη εξυπηρέτηση πελατών.</p>
-                <p class="text-slate-300 text-center text-sm hidden" data-lang-en>Experience in bars and restaurants, with a focus on excellent customer service.</p>
-            </div>
-
-            <div class="flex flex-col items-center p-4 sm:p-6 bg-white/15 backdrop-blur-lg rounded-xl transition-all duration-300 w-full md:w-1/3 transform md:scale-105"> <h3 class="text-2xl sm:text-3xl font-bold mb-2 text-blue-300" data-lang-gr>Junior AI Specialist</h3>
-                <h3 class="text-2xl sm:text-3xl font-bold mb-2 text-blue-300 hidden" data-lang-en>Junior AI Specialist</h3>
-                <p class="text-slate-200 text-center text-sm sm:text-base" data-lang-gr>Ενδιαφέρον και βασικές γνώσεις σε low-code πλατφόρμες αυτοματισμού και AI, με στόχο την περαιτέρω εξειδίκευση.</p>
-                <p class="text-slate-200 text-center text-sm sm:text-base hidden" data-lang-en>Interest and basic knowledge in low-code automation platforms and AI, aiming for further specialization.</p>
-            </div>
-
-            <div class="flex flex-col items-center p-4 bg-white/5 backdrop-blur-md rounded-xl transition-shadow duration-300 w-full md:w-1/3">
-                <h3 class="text-xl sm:text-2xl font-semibold mb-2" data-lang-gr>Τομέας Τροφίμων & Ποτών</h3>
-                <h3 class="text-xl sm:text-2xl font-semibold mb-2 hidden" data-lang-en>Food & Beverage Sector</h3>
-                <p class="text-slate-300 text-center text-sm" data-lang-gr>Γνώση κρεοπωλικής και διαχείρισης τροφίμων.</p>
-                <p class="text-slate-300 text-center text-sm hidden" data-lang-en>Knowledge of butchery and food management.</p>
-            </div>
-
-        </div>
-    </section>
-
-    <div id="cv" class="max-w-full sm:max-w-7xl mx-auto px-4 sm:px-8 py-8 sm:py-12 backdrop-blur-xl bg-white/10 rounded-xl z-10 relative"> <header class="text-center mb-8 sm:mb-10 relative">
-            <div class="absolute top-0 right-0 mt-2 mr-2 sm:mt-4 sm:mr-4"> <button onclick="toggleLanguage()" class="bg-white text-slate-900 font-semibold px-2 py-1 rounded hover:bg-gray-200 text-sm sm:text-base">EN / GR</button> </div>
-            <h1 class="text-2xl sm:text-3xl font-bold pt-4" data-lang-gr>Άγγελος Αραπής</h1> <h1 class="text-2xl sm:text-3xl font-bold pt-4 hidden" data-lang-en>Aggelos Arapis</h1>
-            <h2 class="text-base sm:text-lg text-slate-300" data-lang-gr>Automation Developer | Ενθουσιώδης με Low-code</h2> <h2 class="text-base sm:text-lg text-slate-300 hidden" data-lang-en>Automation Developer | Low-code Enthusiast</h2>
-        </header>
-
-        <section class="relative bg-cover bg-center rounded-xl p-6 sm:p-8 mb-8 sm:mb-12" style="background-image: url('img/profile.jpg');" data-lang-gr>
-            <div class="bg-slate-900 bg-opacity-75 p-4 sm:p-6 rounded-lg">
-                <h3 class="text-lg sm:text-xl font-semibold mb-4 text-blue-300">Επαγγελματικό Προφίλ</h3>
-                <p class="text-left text-sm sm:text-base">Πολυδιάστατος επαγγελματίας με εμπειρία στον τομέα της φιλοξενίας, της κρεοπωλικής, της μπαρτέντινγκ και των VIP μεταφορών. Γνωστός για την προσαρμοστικότητα, την άριστη επικοινωνία και την ποιοτική εξυπηρέτηση πελατών. Εργατικός, μεθοδικός και πρόθυμος να συμβάλει ουσιαστικά στην επιτυχία κάθε ομάδας.</p>
-            </div>
-        </section>
-        <section class="relative bg-cover bg-center rounded-xl p-6 sm:p-8 mb-8 sm:mb-12 hidden" style="background-image: url('img/profile.jpg');" data-lang-en>
-            <div class="bg-slate-900 bg-opacity-75 p-4 sm:p-6 rounded-lg">
-                <h3 class="text-lg sm:text-xl font-semibold mb-4 text-blue-300">Professional Profile</h3>
-                <p class="text-left text-sm sm:text-base">A versatile professional with experience in hospitality, butchery, bartending, and VIP transport. Known for adaptability, excellent communication, and top-tier customer service. Diligent, methodical, and eager to contribute meaningfully to any team.</p>
-            </div>
-        </section>
-
-        <section class="relative bg-cover bg-center rounded-xl p-6 sm:p-8 mb-8 sm:mb-12" style="background-image: url('img/experience.jpg');" data-lang-gr>
-            <div class="bg-slate-900 bg-opacity-75 p-4 sm:p-6 rounded-lg">
-                <h3 class="text-lg sm:text-xl font-semibold mb-4 text-blue-300">Επαγγελματική Εμπειρία</h3>
-                <ul class="list-disc pl-5 space-y-2 sm:space-y-4 text-left text-sm sm:text-base"> <li><strong>Centrum Hotel, Ρέικιαβικ:</strong> Bartender (Μάιος 2024 – σήμερα)</li>
-                        <li><strong>American Bar:</strong> Bartender (Νοε 2024 – σήμερα)</li>
-                        <li><strong>Beergarden, Ρέικιαβικ:</strong> Bartender (Φεβ 2024 – Οκτ 2024)</li>
-                        <li><strong>Εστιατόριο Almira, Σαντορίνη:</strong> Σερβιτόρος (Μάιος – Οκτ 2023)</li>
-                        <li><strong>Κρεοπωλείο Αντωνάκης, Κρήτη:</strong> Κρεοπώλης (2022 – 2023)</li>
-                        <li><strong>Κρεοπωπωλείο Μπουρμπάκης, Κρήτη:</strong> Κρεοπώλης (2021 – 2022)</li>
-                        <li><strong>Πολυτελή Ξενοδοχεία, Κρήτη:</strong> Οδηγός VIP μεταφορών (2019 – 2021)</li>
-                </ul>
-            </div>
-        </section>
-        <section class="relative bg-cover bg-center rounded-xl p-6 sm:p-8 mb-8 sm:mb-12 hidden" style="background-image: url('img/experience.jpg');" data-lang-en>
-            <div class="bg-slate-900 bg-opacity-75 p-4 sm:p-6 rounded-lg">
-                <h3 class="text-lg sm:text-xl font-semibold mb-4 text-blue-300">Professional Experience</h3>
-                <ul class="list-disc pl-5 space-y-2 sm:space-y-4 text-left text-sm sm:text-base"> <li><strong>Centrum Hotel, Reykjavik:</strong> Bartender (May 2024 – Present)</li>
-                        <li><strong>American Bar:</strong> Bartender (Nov 2024 – Present)</li>
-                        <li><strong>Beergarden, Reykjavik:</strong> Bartender (Feb 2024 – Oct 2024)</li>
-                        <li><strong>Almira Restaurant, Santorini:</strong> Waiter (May – Oct 2023)</li>
-                        <li><strong>Antonakis Butcher Shop, Crete:</strong> Butcher (2022 – 2023)</li>
-                        <li><strong>Mpourmpakis Butcher Shop, Crete:</strong> Butcher (2021 – 2022)</li>
-                        <li><strong>Luxury Hotels, Crete:</strong> VIP Transfer Driver (2019 – 2021)</li>
-                </ul>
-            </div>
-        </section>
-
-        <section class="relative bg-cover bg-center rounded-xl p-6 sm:p-8 mb-8 sm:mb-12" style="background-image: url('img/education.jpg');" data-lang-gr>
-            <div class="bg-slate-900 bg-opacity-75 p-4 sm:p-6 rounded-lg">
-                <h3 class="text-lg sm:text-xl font-semibold mb-4 text-blue-300">Εκπαίδευση</h3>
-                <ul class="list-disc pl-5 space-y-2 sm:space-y-4 text-left text-sm sm:text-base"> <li>Απόφοιτος Λυκείου</li>
-                        <li>Πτυχίο Ψύξης & Κλιματισμού – Επαγγελματικό Λύκειο Κρήτης</li>
-                        <li>Τεχνικός Κρεοπώλης – MBS Κρήτης (Διετής πρακτική εκπαίδευση)</li>
-                </ul>
-            </div>
-        </section>
-        <section class="relative bg-cover bg-center rounded-xl p-6 sm:p-8 mb-8 sm:mb-12 hidden" style="background-image: url('img/education.jpg');" data-lang-en>
-            <div class="bg-slate-900 bg-opacity-75 p-4 sm:p-6 rounded-lg">
-                <h3 class="text-lg sm:text-xl font-semibold mb-4 text-blue-300">Education</h3>
-                <ul class="list-disc pl-5 space-y-2 sm:space-y-4 text-left text-sm sm:text-base"> <li>High School Graduate</li>
-                        <li>Refrigeration & Air Conditioning Diploma – Technical High School of Crete</li>
-                        <li>Master Butcher Technician – MBS Crete (2-year vocational training)</li>
-                </ul>
-            </div>
-        </section>
-
-        <section class="relative bg-cover bg-center rounded-xl p-6 sm:p-8 mb-8 sm:mb-12" style="background-image: url('img/languages.jpg');" data-lang-gr>
-            <div class="bg-slate-900 bg-opacity-75 p-4 sm:p-6 rounded-lg">
-                <h3 class="text-lg sm:text-xl font-semibold mb-4 text-blue-300">Γλώσσες</h3>
-                <ul class="list-disc pl-5 space-y-2 sm:space-y-4 text-left text-sm sm:text-base"> <li><strong>Ελληνικά:</strong> Άριστη χρήση σε επαγγελματικό & καθημερινό περιβάλλον</li>
-                        <li><strong>Αγγλικά:</strong> Πιστοποίηση από Πανεπιστήμιο του Michigan. Χρήση σε καθημερινή βάση σε τουριστικές & επαγγελματικές επαφές</li>
-                </ul>
-            </div>
-        </section>
-        <section class="relative bg-cover bg-center rounded-xl p-6 sm:p-8 mb-8 sm:mb-12 hidden" style="background-image: url('img/languages.jpg');" data-lang-en>
-            <div class="bg-slate-900 bg-opacity-75 p-4 sm:p-6 rounded-lg">
-                <h3 class="text-lg sm:text-xl font-semibold mb-4 text-blue-300">Languages</h3>
-                <ul class="list-disc pl-5 space-y-2 sm:space-y-4 text-left text-sm sm:text-base"> <li><strong>Greek:</strong> Fluent in both professional and casual environments</li>
-                        <li><strong>English:</strong> Certified by the University of Michigan. Used daily in hospitality and international work</li>
-                </ul>
-            </div>
-        </section>
-
-        <section class="relative bg-cover bg-center rounded-xl p-6 sm:p-8 mb-8 sm:mb-12" style="background-image: url('img/skills.jpg');" data-lang-gr>
-            <div class="bg-slate-900 bg-opacity-75 p-4 sm:p-6 rounded-lg">
-                <h3 class="text-lg sm:text-xl font-semibold mb-4 text-blue-300">Δεξιότητες</h3>
-                <ul class="list-disc pl-5 space-y-2 sm:space-y-4 text-left text-sm sm:text-base"> <li>Φιλοξενία: Bartending, σερβιτόρος, εξυπηρέτηση πελατών</li>
-                        <li>Κρεοπωλική: Παραγωγή, πώληση, ασφάλεια τροφίμων</li>
-                        <li>Μεταφορές VIP: Επαγγελματική, διακριτική εξυπηρέτηση</li>
-                        <li>Επικοινωνία: Διγλωσσία, διαχείριση πελατών, επαφή με ομάδες</li>
-                        <li>Προσαρμοστικότητα: Γρήγορη εκμάθηση, ευελιξία σε νέα περιβάλλοντα</li>
-                </ul>
-            </div>
-        </section>
-        <section class="relative bg-cover bg-center rounded-xl p-6 sm:p-8 mb-8 sm:mb-12 hidden" style="background-image: url('img/skills.jpg');" data-lang-en>
-            <div class="bg-slate-900 bg-opacity-75 p-4 sm:p-6 rounded-lg">
-                <h3 class="text-lg sm:text-xl font-semibold mb-4 text-blue-300">Skills</h3>
-                <ul class="list-disc pl-5 space-y-2 sm:space-y-4 text-left text-sm sm:text-base"> <li>Hospitality: Bartending, waiter service, customer support</li>
-                        <li>Butchery: Meat preparation, sales, food safety</li>
-                        <li>VIP Transport: Professional, discreet service</li>
-                        <li>Communication: Bilingual, client handling, team interaction</li>
-                        <li>Adaptability: Fast learner, flexible in new environments</li>
-                </ul>
-            </div>
-        </section>
-
-        <section class="relative bg-cover bg-center rounded-xl p-6 sm:p-8 mb-8 sm:mb-12" style="background-image: url('img/certification.jpg');" data-lang-gr>
-            <div class="bg-slate-900 bg-opacity-75 p-4 sm:p-6 rounded-lg">
-                <h3 class="text-lg sm:text-xl font-semibold mb-4 text-blue-300">Πιστοποιήσεις & Στρατιωτική Θητεία</h3>
-                <ul class="list-disc pl-5 space-y-2 sm:space-y-4 text-left text-sm sm:text-base"> <li>Άδεια οδήγησης: Αυτοκίνητο & Μηχανή</li>
-                        <li>Στρατιωτική Θητεία: Ολοκληρωμένη</li>
-                        <li>Ημερομηνία Γέννησης: 11/01/1999</li>
-                        <li>Τοποθεσία: Ρέικιαβικ, Ισλανδία</li>
-                </ul>
-            </div>
-        </section>
-        <section class="relative bg-cover bg-center rounded-xl p-6 sm:p-8 mb-8 sm:mb-12 hidden" style="background-image: url('img/certification.jpg');" data-lang-en>
-            <div class="bg-slate-900 bg-opacity-75 p-4 sm:p-6 rounded-lg">
-                <h3 class="text-lg sm:text-xl font-semibold mb-4 text-blue-300">Certificates & Military Service</h3>
-                <ul class="list-disc pl-5 space-y-2 sm:space-y-4 text-left text-sm sm:text-base"> <li>Driving License: Car & Motorbike</li>
-                        <li>Military Service: Completed</li>
-                        <li>Date of Birth: 11/01/1999</li>
-                        <li>Location: Reykjavik, Iceland</li>
-                </ul>
-            </div>
-        </section>
-
-        <section class="max-w-7xl mx-auto mt-8 sm:mt-12 mb-12 text-center p-4">
-            <h2 class="text-3xl sm:text-4xl font-bold mb-6" data-lang-gr>Έτοιμος να Επικοινωνήσεις;</h2>
-            <h2 class="text-3xl sm:text-4xl font-bold mb-6 hidden" data-lang-en>Ready to Connect?</h2>
+        <!-- Υπότιτλος -->
+        <p class="text-xl md:text-2xl text-slate-400 max-w-2xl mx-auto"> 
+            <span data-lang="gr">Junior AI Engineer & AI Web Developer με πάθος για καινοτόμες λύσεις.</span>
+            <span data-lang="en" style="display:none;">Junior AI Engineer & Web Developer with a passion for innovative solutions and clean code.</span>
             
-            <a href="contact.html" class="bg-blue-600 text-white font-bold px-8 py-4 rounded-full hover:bg-blue-700 transition-colors duration-200 inline-block text-lg sm:text-xl shadow-lg">
-                <span data-lang-gr>Επικοινωνία</span>
-                <span data-lang-en class="hidden">Contact Me</span>
-            </a>
+        </p>
+    </header>
+
+    <!-- Κύριο Περιεχόμενο - Ενότητες -->
+    <main class="space-y-20 md:space-y-24">
+
+        <!-- Ενότητα: Ποιος Είμαι (Παράδειγμα) -->
+        <!-- Ενότητα: Επαγγελματικό Προφίλ (Ποιος Είμαι) -->
+        <section id="about" class="scroll-animate slide-from-left relative w-full min-h-screen bg-cover bg-center flex items-center justify-center" style="background-image: url('img/profile.jpg');">
+            <div class="content-overlay bg-black/60 backdrop-blur-sm p-6 rounded-xl text-white max-w-6xl w-4/5 mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center">
+                    <span data-lang="gr">Ποιος Είμαι</span>
+                    <span data-lang="en" style="display:none;">About Me</span>
+                </h2>
+                <div class="text-xl md:text-2xl space-y-4 max-w-full mx-auto text-left md:text-justify">
+                    <p> 
+                        <span data-lang="gr">Ασχολούμαι επαγγελματικά με τον χώρο της φιλοξενίας, της εστίασης, των μεταφορών και της εξυπηρέτησης πελατών, ενώ παράλληλα εξερευνώ τον τομέα του Web Development και των AI εργαλείων με προσωπικά projects. Στόχος μου είναι η συνεχής εξέλιξη και η δημιουργία λύσεων που έχουν πρακτικό αντίκτυπο.</span>
+                        <span data-lang="en" class="hidden">I work professionally in the fields of hospitality, catering, transportation and customer service, while also exploring Web Development and AI tools through personal projects. My goal is continuous growth and creating solutions with real-world impact.</span>
+                    </p> 
+                </div>
+            </div>
         </section>
-        </div>
+
+        <!-- Ενότητα: Εμπειρία -->
+        <section id="experience" class="scroll-animate slide-from-right relative w-full min-h-screen bg-cover bg-center flex items-center justify-center" style="background-image: url('img/experience.jpg');">
+            <div class="content-overlay bg-black/60 backdrop-blur-sm p-6 rounded-xl text-white max-w-6xl w-4/5 mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center">
+                    <span data-lang="gr">Επαγγελματική Εμπειρία</span>
+                    <span data-lang="en" style="display:none;">Experience</span>
+                </h2>
+                <div class="text-xl md:text-2xl space-y-6 max-w-full mx-auto">
+                    <p class="text-center md:text-left">
+                        <span data-lang="gr">Έχω εμπειρία στους τομείς της φιλοξενίας, της εστίασης, των VIP μεταφορών και της κρεοπωλικής, με έμφαση στην επαγγελματική εξυπηρέτηση και την προσαρμοστικότητα.</span>
+                        <span data-lang="en" style="display:none;">I have experience in hospitality, catering, VIP transportation, and butchery, with a focus on professional service and adaptability.</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+ 
+        <!-- Ενότητα: Σπουδές -->
+        <section id="education" class="scroll-animate slide-from-left relative w-full min-h-screen bg-cover bg-center flex items-center justify-center" style="background-image: url('img/education.jpg');">
+            <div class="content-overlay bg-black/60 backdrop-blur-sm p-6 rounded-xl text-white max-w-6xl w-4/5 mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center">
+                    <span data-lang="gr">Σπουδές</span>
+                    <span data-lang="en" style="display:none;">Education</span>
+                </h2>
+                <div class="text-xl md:text-2xl space-y-4 max-w-full mx-auto">
+                    <p class="text-center md:text-left">
+                        <span data-lang="gr">Απόφοιτος Λυκείου, κάτοχος επαγγελματικού διπλώματος Κρεοπωλικής. Επιπλέον, έχω ξεκινήσει σπουδές στον τομέα της ανάπτυξης Τεχνητής Νοημοσύνης (AI Development).</span>
+                        <span data-lang="en" style="display:none;">High school graduate with a professional certification in Butchery. Additionally, I have begun studies in the field of AI Development.</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ενότητα: Δεξιότητες -->
+        <section id="skills" class="scroll-animate slide-from-right relative w-full min-h-screen bg-cover bg-center flex items-center justify-center" style="background-image: url('img/skills.jpg');">
+            <div class="content-overlay bg-black/60 backdrop-blur-sm p-6 rounded-xl text-white max-w-6xl w-4/5 mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center">
+                    <span data-lang="gr">Δεξιότητες</span>
+                    <span data-lang="en" style="display:none;">Skills</span>
+                </h2>
+                <div class="text-xl md:text-2xl max-w-full mx-auto">
+                    <p class="mb-6 text-center">
+                        <span data-lang="gr">Πειραματίζομαι με εργαλεία τεχνητής νοημοσύνης και αναπτύσσω προσωπικά Web projects.</span>
+                        <span data-lang="en" style="display:none;">I experiment with artificial intelligence tools and develop personal Web projects.</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ενότητα: Φιλοξενία, Τομέας Τροφίμων & Ποτών (Μεταφέρθηκε στο τέλος) -->
+        <section id="hospitality" class="scroll-animate slide-from-left">
+            <!-- Αυτή η ενότητα ΔΕΝ παίρνει background image, κρατάει το glassmorphism -->
+            <div class="glass-section bg-white/10 backdrop-blur-md rounded-xl shadow-xl p-8 max-w-4xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center">
+                    <span data-lang="gr">Προηγούμενη Εμπειρία</span>
+                    <span data-lang="en" style="display:none;">Previous Experience</span>
+                </h2>
+                <div class="text-lg sm:text-xl space-y-4 max-w-3xl mx-auto text-left md:text-justify">
+                    <p>
+                        <span data-lang="gr">Πριν την ενασχόλησή μου με την τεχνολογία, απέκτησα πολύτιμη εμπειρία στον τομέα της φιλοξενίας και των τροφίμων & ποτών. Αυτές οι θέσεις με δίδαξαν την σημασία της εξυπηρέτησης πελατών, της ομαδικής εργασίας και της διαχείρισης χρόνου υπό πίεση – δεξιότητες που θεωρώ εξίσου σημαντικές και στον τεχνολογικό κλάδο.</span>
+                        <span data-lang="en" style="display:none;">Before my involvement with technology, I gained valuable experience in the hospitality and food & beverage sector. These positions taught me the importance of customer service, teamwork, and time management under pressure – skills I consider equally important in the technology industry.</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ενότητα: Επικοινωνία -->
+        <section id="contact" class="scroll-animate slide-from-right">
+            <!-- Αυτή η ενότητα ΔΕΝ παίρνει background image, κρατάει το glassmorphism -->
+            <div class="glass-section bg-white/10 backdrop-blur-md rounded-xl shadow-xl p-8 max-w-4xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center">
+                    <span data-lang="gr">Επικοινωνία</span>
+                    <span data-lang="en" style="display:none;">Contact</span>
+                </h2>
+                <div class="text-lg sm:text-xl space-y-4 max-w-3xl mx-auto text-center">
+                    <p>
+                        <span data-lang="gr">Θα χαρώ να ακούσω νέα σας! Μη διστάσετε να επικοινωνήσετε για ευκαιρίες συνεργασίας ή ερωτήσεις.</span>
+                        <span data-lang="en" style="display:none;">I'd be happy to hear from you! Feel free to contact me for collaboration opportunities or questions.</span>
+                    </p>
+                    <a href="mailto:aggelos.arapis@example.com"
+                       class="button-link inline-block bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition-colors duration-300 text-base sm:text-lg">
+                        <span data-lang="gr">Στείλτε Email</span>
+                        <span data-lang="en" style="display:none;">Send Email</span>
+                    </a>
+                    <p class="mt-4">
+                        <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" class="text-accent hover:text-sky-400 transition-colors">
+                            <span data-lang="gr">Προφίλ LinkedIn</span>
+                            <span data-lang="en" style="display:none;">LinkedIn Profile</span>
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-12 mt-12 md:mt-20">
+        <p class="text-gray-400">
+            <span data-lang="gr">&copy; <span id="currentYearGR"></span> Άγγελος Αραπής. Με επιφύλαξη παντός δικαιώματος.</span>
+            <span data-lang="en" style="display:none;">&copy; <span id="currentYearEN"></span> Angelos Arapis. All rights reserved.</span>
+        </p>
+    </footer>
 
     <script>
-        window.onscroll = function() {
-            var progressBar = document.getElementById("progressBar");
-            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            var scrolled = (winScroll / height) * 100;
-            progressBar.style.width = scrolled + "%";
-        };
+        document.addEventListener('DOMContentLoaded', () => {
+            // Intersection Observer για τα scroll animations
+            const animatedElements = document.querySelectorAll('.scroll-animate');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        // Προαιρετικά: σταματάμε την παρακολούθηση μετά την πρώτη εμφάνιση
+                        // observer.unobserve(entry.target); 
+                    } else {
+                        // Προαιρετικά: αν θέλεις το animation να επαναλαμβάνεται όταν ξαναγίνεται ορατό
+                        // entry.target.classList.remove('is-visible');
+                    }
+                });
+            }, {
+                threshold: 0.1 // Το animation ενεργοποιείται όταν το 10% του στοιχείου είναι ορατό
+            });
+
+            animatedElements.forEach(el => {
+                observer.observe(el);
+            });
+
+            // Language Toggle Functionality
+            const langToggleButton = document.getElementById('lang-toggle');
+            let currentLang = localStorage.getItem('preferredLang') || 'gr'; // Default to Greek
+
+            function updateButtonText() {
+                if (langToggleButton) {
+                    langToggleButton.textContent = currentLang === 'gr' ? 'EN' : 'GR';
+                }
+            }
+
+            function applyLanguage(lang) {
+                document.querySelectorAll('[data-lang]').forEach(el => {
+                    if (el.dataset.lang === lang) {
+                        el.style.display = ''; // Revert to default display (inline, block, etc.)
+                    } else {
+                        el.style.display = 'none';
+                    }
+                });
+                currentLang = lang;
+                localStorage.setItem('preferredLang', currentLang);
+                updateButtonText();
+            }
+
+            if (langToggleButton) {
+                langToggleButton.addEventListener('click', () => {
+                    const newLang = currentLang === 'gr' ? 'en' : 'gr';
+                    applyLanguage(newLang);
+                });
+            }
+            applyLanguage(currentLang); // Apply initial language on page load
+
+            // Εμφάνιση τρέχοντος έτους στο footer
+            const currentYear = new Date().getFullYear();
+            document.getElementById('currentYearGR').textContent = currentYear;
+            document.getElementById('currentYearEN').textContent = currentYear;
+        });
+
+        // Scroll Progress Bar Functionality
+        window.addEventListener('scroll', () => {
+            const progressBar = document.getElementById('scroll-progress-bar');
+            if (progressBar) {
+                const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+                const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrollProgress = (scrollTop / scrollHeight) * 100;
+                progressBar.style.width = scrollProgress + '%';
+            }
+        });
+
     </script>
 
 </body>
