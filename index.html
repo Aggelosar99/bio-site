@@ -1,15 +1,11 @@
-<!-- Existing HTML content will be replaced -->
-<!-- Make sure you have img/profile_optimized.jpg in your project -->
 <!DOCTYPE html>
-<html lang="el"> <!-- Ορισμός γλώσσas σε Ελληνικά -->
-<head>
+<html lang="el"> <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Άγγελος Αραπής - CV</title>
-    <!-- TailwindCSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Custom scrollbar (προαιρετικό, για αισθητική παρόμοια με kkatsaras.gr) */
+        /* Custom scrollbar */
         body::-webkit-scrollbar {
             width: 8px;
         }
@@ -38,10 +34,19 @@
             transform: translateX(0); /* Τελική θέση μετά το animation */
         }
 
-        /* Σκούρο φόντο για το body, παρόμοιο με το kkatsaras.gr */
+        /* Σκούρο φόντο για το body */
         body {
             background-color: #0d1117; /* Πολύ σκούρο γκρι, σχεδόν μαύρο */
             color: #c9d1d9; /* Ανοιχτό γκρι για το βασικό κείμενο */
+        }
+
+        /* Glassmorphism Overlay Class for consistency and maintainability */
+        .glass-overlay {
+            background-color: rgba(0, 0, 0, 0.6); /* bg-black/60 */
+            backdrop-filter: blur(8px); /* backdrop-blur-sm, value adjusted for consistency */
+            padding: 1.5rem; /* p-6 */
+            border-radius: 0.75rem; /* rounded-xl */
+            color: #ffffff; /* text-white */
         }
 
         /* Εξασφάλιση αναγνωσιμότητας κειμένου μέσα στις glassmorphism ενότητες (που δεν έχουν full background image) */
@@ -51,10 +56,7 @@
         .glass-section h2 {
             color: #ffffff; /* Λευκό για τους τίτλους για μεγαλύτερη έμφαση */
         }
-        .glass-section .text-accent {
-            color: #7dd3fc; /* Ανοιχτό γαλάζιο για δευτερεύουσες πληροφορίες (π.χ. εταιρεία, πανεπιστήμιο) */
-        }
-        /* Γενική κλάση για χρώμα έμφασης, θα χρησιμοποιηθεί και στα overlays */
+        /* Γενική κλάση για χρώμα έμφασης */
         .text-accent {
             color: #7dd3fc;
         }
@@ -62,42 +64,32 @@
 </head>
 <body class="font-sans antialiased px-6 py-12">
 
-    <!-- Placeholder για το κουμπί εναλλαγής γλώσσας (EN/GR) - όπως αναφέρεται στο todo.md -->
-    <div id="scroll-progress-bar" class="fixed top-0 left-0 h-1 bg-sky-500 w-0 z-[9999]"></div> <!-- Scroll Progress Bar -->
-    <div class="fixed top-4 right-4 z-[50]"> <!-- Εξασφάλιση ότι το z-index είναι μικρότερο από το progress bar -->
-        <button id="lang-toggle" class="bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-lg shadow-md hover:bg-white/30 transition-colors">
+    <div id="scroll-progress-bar" class="fixed top-0 left-0 h-1 bg-sky-500 w-0 z-[9999]"></div> <div class="fixed top-4 right-4 z-[50]"> <button id="lang-toggle" class="bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-lg shadow-md hover:bg-white/30 transition-colors">
             EN/GR
         </button>
     </div>
  
-    <!-- Hero Section -->
-    <header class="text-center mb-20 md:mb-32 pt-16 md:pt-24">
-        <!-- Εικόνα Προφίλ -->
-        <img src="img/profile_optimized.jpg" alt="Άγγελος Αραπής"
+    <header class="relative text-center mb-20 md:mb-32 pt-16 md:pt-24 bg-cover bg-center flex flex-col items-center justify-center" style="background-image: url('img/background.jpg');">
+        <img src="img/profile_optimized.jpg" alt="Άγγελος Αραπής - Φωτογραφία προφίλ"
              class="w-40 h-40 md:w-56 md:h-56 rounded-full mx-auto mb-8 shadow-2xl border-4 border-white/20 object-cover">
 
-        <!-- Όνομα -->
-        <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">  <!-- Changed size from text-5xl md:text-7xl -->
-        
-            <span data-lang="gr">Άγγελος Αραπής</span>
-            <span data-lang="en" style="display:none;">Angelos Arapis</span>
-        </h1>
+        <div class="glass-overlay max-w-full mx-auto mb-8">
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">
+                <span data-lang="gr">Άγγελος Αραπής</span>
+                <span data-lang="en" style="display:none;">Angelos Arapis</span>
+            </h1>
 
-        <!-- Υπότιτλος -->
-        <p class="text-xl md:text-2xl text-slate-400 max-w-2xl mx-auto"> 
-            <span data-lang="gr">Junior AI Engineer & AI Web Developer με πάθος για καινοτόμες λύσεις.</span>
-            <span data-lang="en" style="display:none;">Junior AI Engineer & Web Developer with a passion for innovative solutions and clean code.</span>
-            
-        </p>
+            <p class="text-xl md:text-2xl text-slate-200"> 
+                <span data-lang="gr">Junior AI Engineer & AI Web Developer με πάθος για καινοτόμες λύσεις.</span>
+                <span data-lang="en" style="display:none;">Junior AI Engineer & AI Web Developer with a passion for innovative solutions.</span>
+            </p>
+        </div>
     </header>
 
-    <!-- Κύριο Περιεχόμενο - Ενότητες -->
     <main class="space-y-20 md:space-y-24">
 
-        <!-- Ενότητα: Ποιος Είμαι (Παράδειγμα) -->
-        <!-- Ενότητα: Επαγγελματικό Προφίλ (Ποιος Είμαι) -->
-        <section id="about" class="scroll-animate slide-from-left relative w-full min-h-screen bg-cover bg-center flex items-center justify-center" style="background-image: url('img/profile.jpg');">
-            <div class="content-overlay bg-black/60 backdrop-blur-sm p-6 rounded-xl text-white max-w-6xl w-4/5 mx-auto">
+        <section id="about" class="scroll-animate slide-from-left relative w-full min-h-screen bg-cover bg-center flex items-center justify-center" style="background-image: url('img/profile.jpg');" role="img" aria-label="Εικόνα φόντου: Άτομο που σκέφτεται">
+            <div class="content-overlay glass-overlay w-11/12 mx-auto">
                 <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center">
                     <span data-lang="gr">Ποιος Είμαι</span>
                     <span data-lang="en" style="display:none;">About Me</span>
@@ -105,15 +97,14 @@
                 <div class="text-xl md:text-2xl space-y-4 max-w-full mx-auto text-left md:text-justify">
                     <p> 
                         <span data-lang="gr">Ασχολούμαι επαγγελματικά με τον χώρο της φιλοξενίας, της εστίασης, των μεταφορών και της εξυπηρέτησης πελατών, ενώ παράλληλα εξερευνώ τον τομέα του Web Development και των AI εργαλείων με προσωπικά projects. Στόχος μου είναι η συνεχής εξέλιξη και η δημιουργία λύσεων που έχουν πρακτικό αντίκτυπο.</span>
-                        <span data-lang="en" class="hidden">I work professionally in the fields of hospitality, catering, transportation and customer service, while also exploring Web Development and AI tools through personal projects. My goal is continuous growth and creating solutions with real-world impact.</span>
+                        <span data-lang="en" style="display:none;">I work professionally in the fields of hospitality, catering, transportation and customer service, while also exploring Web Development and AI tools through personal projects. My goal is continuous growth and creating solutions with real-world impact.</span>
                     </p> 
                 </div>
             </div>
         </section>
 
-        <!-- Ενότητα: Εμπειρία -->
-        <section id="experience" class="scroll-animate slide-from-right relative w-full min-h-screen bg-cover bg-center flex items-center justify-center" style="background-image: url('img/experience.jpg');">
-            <div class="content-overlay bg-black/60 backdrop-blur-sm p-6 rounded-xl text-white max-w-6xl w-4/5 mx-auto">
+        <section id="experience" class="scroll-animate slide-from-right relative w-full min-h-screen bg-cover bg-center flex items-center justify-center" style="background-image: url('img/experience.jpg');" role="img" aria-label="Εικόνα φόντου: Γραφείο με υπολογιστή και σημειώσεις">
+            <div class="content-overlay glass-overlay w-11/12 mx-auto">
                 <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center">
                     <span data-lang="gr">Επαγγελματική Εμπειρία</span>
                     <span data-lang="en" style="display:none;">Experience</span>
@@ -127,9 +118,8 @@
             </div>
         </section>
  
-        <!-- Ενότητα: Σπουδές -->
-        <section id="education" class="scroll-animate slide-from-left relative w-full min-h-screen bg-cover bg-center flex items-center justify-center" style="background-image: url('img/education.jpg');">
-            <div class="content-overlay bg-black/60 backdrop-blur-sm p-6 rounded-xl text-white max-w-6xl w-4/5 mx-auto">
+        <section id="education" class="scroll-animate slide-from-left relative w-full min-h-screen bg-cover bg-center flex items-center justify-center" style="background-image: url('img/education.jpg');" role="img" aria-label="Εικόνα φόντου: Βιβλία και πτυχία">
+            <div class="content-overlay glass-overlay w-11/12 mx-auto">
                 <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center">
                     <span data-lang="gr">Σπουδές</span>
                     <span data-lang="en" style="display:none;">Education</span>
@@ -143,9 +133,8 @@
             </div>
         </section>
 
-        <!-- Ενότητα: Δεξιότητες -->
-        <section id="skills" class="scroll-animate slide-from-right relative w-full min-h-screen bg-cover bg-center flex items-center justify-center" style="background-image: url('img/skills.jpg');">
-            <div class="content-overlay bg-black/60 backdrop-blur-sm p-6 rounded-xl text-white max-w-6xl w-4/5 mx-auto">
+        <section id="skills" class="scroll-animate slide-from-right relative w-full min-h-screen bg-cover bg-center flex items-center justify-center" style="background-image: url('img/skills.jpg');" role="img" aria-label="Εικόνα φόντου: Τεχνολογικά σύμβολα και κώδικας">
+            <div class="content-overlay glass-overlay w-11/12 mx-auto">
                 <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center">
                     <span data-lang="gr">Δεξιότητες</span>
                     <span data-lang="en" style="display:none;">Skills</span>
@@ -159,9 +148,7 @@
             </div>
         </section>
 
-        <!-- Ενότητα: Φιλοξενία, Τομέας Τροφίμων & Ποτών (Μεταφέρθηκε στο τέλος) -->
         <section id="hospitality" class="scroll-animate slide-from-left">
-            <!-- Αυτή η ενότητα ΔΕΝ παίρνει background image, κρατάει το glassmorphism -->
             <div class="glass-section bg-white/10 backdrop-blur-md rounded-xl shadow-xl p-8 max-w-4xl mx-auto">
                 <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center">
                     <span data-lang="gr">Προηγούμενη Εμπειρία</span>
@@ -176,9 +163,7 @@
             </div>
         </section>
 
-        <!-- Ενότητα: Επικοινωνία -->
         <section id="contact" class="scroll-animate slide-from-right">
-            <!-- Αυτή η ενότητα ΔΕΝ παίρνει background image, κρατάει το glassmorphism -->
             <div class="glass-section bg-white/10 backdrop-blur-md rounded-xl shadow-xl p-8 max-w-4xl mx-auto">
                 <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center">
                     <span data-lang="gr">Επικοινωνία</span>
@@ -189,7 +174,7 @@
                         <span data-lang="gr">Θα χαρώ να ακούσω νέα σας! Μη διστάσετε να επικοινωνήσετε για ευκαιρίες συνεργασίας ή ερωτήσεις.</span>
                         <span data-lang="en" style="display:none;">I'd be happy to hear from you! Feel free to contact me for collaboration opportunities or questions.</span>
                     </p>
-                    <a href="mailto:aggelos.arapis@example.com"
+                    <a href="contact.html"
                        class="button-link inline-block bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition-colors duration-300 text-base sm:text-lg">
                         <span data-lang="gr">Στείλτε Email</span>
                         <span data-lang="en" style="display:none;">Send Email</span>
@@ -206,7 +191,6 @@
 
     </main>
 
-    <!-- Footer -->
     <footer class="text-center py-12 mt-12 md:mt-20">
         <p class="text-gray-400">
             <span data-lang="gr">&copy; <span id="currentYearGR"></span> Άγγελος Αραπής. Με επιφύλαξη παντός δικαιώματος.</span>
